@@ -8,8 +8,8 @@
     "start:prod": "node server.js",
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
-    "userSeed": "node scripts/userSeed.js",
-    "movieSeed": "node scripts/movieSeed.js",
+    "seedUser": "node scripts/userSeed.js",
+    "seedMovie": "node scripts/movieSeed.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
