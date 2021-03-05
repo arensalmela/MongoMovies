@@ -21,8 +21,8 @@ function LogoutHooks() {
     });
 
     return (
-        <button onCLick={signOut} className="button">
-        <img src={GoogleIcon} className="icon"></img>
+        <button onClick={signOut} className="button">
+        <img src={GoogleIcon} alt="google icon" className="icon"></img>
         <span className="buttonText">Logout</span>
         </button>
       );
