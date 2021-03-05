@@ -6,7 +6,7 @@ const movieSchema = new Schema({
     poster: {type: String},
     released: {type: String},
     overview: {type: String},
-    watched: {type: Boolean}
+    apiID: {type: String}
 })
 
 const Movie = mongoose.model("Movie", movieSchema);
