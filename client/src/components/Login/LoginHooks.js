@@ -27,8 +27,8 @@ function LoginHooks() {
     });
 
     return (
-        <button onCLick={signIn} className="button">
-        <img src={GoogleIcon} className="icon"></img>
+        <button onClick={signIn} className="button">
+        <img src={GoogleIcon} alt="google icon" className="icon"></img>
         <span className="buttonText">Sign in With Google</span>
         </button>
       );
