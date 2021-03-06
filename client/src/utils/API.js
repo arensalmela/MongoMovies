@@ -1,15 +1,20 @@
 import axios from 'axios';
 
-const APIkey = process.env.APIkey;
+const apiKey = axios.get('/apiKey');
+    
+const API =  {
 
-const APIqueries =  {
     trending: function() {
-        return axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${APIkey}`)
+        return axios.get("https://api.themoviedb.org/3/trending/all/week?api_key=b4e4bf0cacce33825c461bf195d9421e")
     },
 
     query: function(searchTerm) {
-        return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+        return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+    },
+
+    newUser: function(user) {
+        return axios.post('/login', user);
     }
 }
 
-export default APIqueries;
+export default API;

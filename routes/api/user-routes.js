@@ -1,18 +1,10 @@
-const express = require('express');
-const app = express();
+const router = require('express').Router();
+//const app = express();
 const userController = require('../../controllers/userController');
 
 //adding new user to db
-app.post('/login', async (req, res) => {
-    try {
+router.route('/login').post(
+    userController.create
+)
 
-        userController.create({
-            name: req.body.givenName,
-            email: req.body.email,
-            googleId: req.body.googleId
-        })
-        //redirect to user home?
-    } catch {
-        //error handling
-    }
-})
+module.exports = router;
