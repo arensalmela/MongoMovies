@@ -5,7 +5,7 @@ const apiKey = axios.get('/apiKey');
 const API =  {
 
     trending: function() {
-        return axios.get("https://api.themoviedb.org/3/trending/all/week?api_key=b4e4bf0cacce33825c461bf195d9421e")
+        return axios.get('/trending')
     },
 
     query: function(searchTerm) {
@@ -15,6 +15,8 @@ const API =  {
     newUser: function(user) {
         return axios.post('/login', user);
     }
+
+
 }
 
 export default API;
