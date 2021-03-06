@@ -7,22 +7,22 @@ const userSeed = [
     {
         name: "aabb",
         email: "a@a.com",
-        password: "aa"
+        googleID: "aa"
     },
     {
         name: "bbaa",
         email: "b@b.com",
-        password: "bb"
+        googleID: "bb"
     },
     {
         name: "ddcc",
         email: "c@c.com",
-        password: "cc"
+        googleID: "cc"
     },
     {
         name: "ccdd",
         email: "d@d.com",
-        password: "dd"
+        googleID: "dd"
     },
 ]
 
