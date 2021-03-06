@@ -1,12 +1,18 @@
-const db = require('../models/User');
+const db = require('../models');
 
 //Define methods for userController
 
 module.exports = {
    //new user - write google info to database
+  
    create: function(req, res) {
+      //console.log(req.body)
        db.User
-        .create(req.body)
+        .findOneAndUpdate({email: req.body.email}, {
+           name: req.body.givenName,
+           email: req.body.email,
+           googleID: req.body.googleId
+        }, {upsert: true})
         .then(newUser => res.json(newUser))
         .catch(err => res.status(422).json(err));
    }

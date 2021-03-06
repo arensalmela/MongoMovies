@@ -1,17 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import API from '../../utils/API';
+import LoginHooks from '../Login/LoginHooks';
 
-function Home() {
+function Home({user}) {
     const [trending, setTrending] = useState();
     //When user logs in, show them trending movies
     useEffect(() => {
-        const data = API.trending
-        data.then((response => setTrending(response)))
-        return data
+        API.trending()
+        .then((response => setTrending(response)))
     })
 
+
     return <>
-       <div>{trending}</div>
+        <div>{JSON.stringify(trending)}</div> 
+       
     </>
 }
 
