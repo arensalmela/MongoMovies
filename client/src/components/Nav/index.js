@@ -34,9 +34,6 @@ export default function Nav() {
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = (e) => {
-        if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
-            return;
-        }
         setOpen(!open);
     };
 
