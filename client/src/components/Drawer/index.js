@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
-import { List, ListItem, ListItemIcon, ListItemText, Divider } from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import CollectionIcon from "@material-ui/icons/Subscriptions";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
@@ -18,63 +18,59 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Drawer({ open, toggleDrawer, selectedIndex, handleListItemClick }) {
+export default function Drawer({ open, toggleDrawer }) {
     const classes = useStyles();
     const location = useLocation()
 
     return (
-        <SwipeableDrawer anchor="right" open={open} onClose={toggleDrawer} color="inherit">
+        <SwipeableDrawer anchor="right" color="inherit" open={open} onOpen={toggleDrawer} onClose={toggleDrawer}>
             <div className={classes.list} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
 
-                <List component="nav" aria-label="logged-out links">
+                <List component="nav" aria-label="nav links">
+                    {
+                        (location.pathname === '/login' || location.pathname === '/signup') &&
+                        <>
+                            <Link to="/login" className={classes.link}>
+                                <ListItem selected={location.pathname === "/login"} button>
+                                    <ListItemText primary="Login" />
+                                </ListItem>
+                            </Link>
+                            <Link to="/signup" className={classes.link}>
+                                <ListItem selected={location.pathname === "/signup"} button>
+                                    <ListItemText primary="Signup" />
+                                </ListItem>
+                            </Link>
+                        </>
+                    }
+                    {
+                        (location.pathname !== '/login' && location.pathname !== '/signup') &&
+                        <>
+                            <Link to="/" className={classes.link}>
+                                <ListItem selected={location.pathname === "/"} button>
+                                    <ListItemIcon>
+                                        <HomeIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Home" />
+                                </ListItem>
+                            </Link>
 
-                    {/* ONLY login/signup pages */}
+                            <Link to="/collections" className={classes.link}>
+                                <ListItem selected={location.pathname === "/collections"} button>
+                                    <ListItemIcon>
+                                        <CollectionIcon />
+                                    </ListItemIcon>
+                                    <ListItemText primary="Collections" />
+                                </ListItem>
+                            </Link>
 
-                    <Link to="/login" className={classes.link}>
-                        <ListItem selected={selectedIndex === 0} onClick={() => handleListItemClick(0)} button>
-                            <ListItemText primary="Login" />
-                        </ListItem>
-                    </Link>
-
-                    <Link to="/signup" className={classes.link}>
-                        <ListItem selected={selectedIndex === 1} onClick={() => handleListItemClick(1)} button>
-                            <ListItemText primary="Signup" />
-                        </ListItem>
-                    </Link>
-
-                </List>
-
-                <Divider />
-
-                <List component="nav" aria-label="logged-in links">
-
-                    {/* On all BUT login/signup pages */}
-
-                    <Link to="/" className={classes.link}>
-                        <ListItem selected={selectedIndex === 2} onClick={() => handleListItemClick(2)} button>
-                            <ListItemIcon>
-                                <HomeIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Home" />
-                        </ListItem>
-                    </Link>
-
-                    <Link to="/collections" className={classes.link}>
-                        <ListItem selected={selectedIndex === 3} onClick={() => handleListItemClick(3)} button>
-                            <ListItemIcon>
-                                <CollectionIcon />
-                            </ListItemIcon>
-                            <ListItemText primary="Collections" />
-                        </ListItem>
-                    </Link>
-
-                    <ListItem selected={selectedIndex === 4} onClick={() => handleListItemClick(4)} button>
-                        <ListItemIcon>
-                            <LogoutIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </ListItem>
-
+                            <ListItem button>
+                                <ListItemIcon>
+                                    <LogoutIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Logout" />
+                            </ListItem>
+                        </>
+                    }
                 </List>
 
             </div>

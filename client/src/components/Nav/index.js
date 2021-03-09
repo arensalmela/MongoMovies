@@ -32,21 +32,12 @@ export default function Nav() {
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);
-    const [selectedIndex, setSelectedIndex] = useState(2);
-
-    const handleListItemClick = (index) => {
-        setSelectedIndex(index);
-    };
 
     const toggleDrawer = (e) => {
         if (e.type === "keydown" && (e.key === "Tab" || e.key === "Shift")) {
             return;
         }
-        setOpen(false);
-    };
-
-    const openDrawer = () => {
-        setOpen(true);
+        setOpen(!open);
     };
 
     return (
@@ -62,7 +53,7 @@ export default function Nav() {
                         className={classes.menuButton}
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={openDrawer}
+                        onClick={toggleDrawer}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -71,8 +62,6 @@ export default function Nav() {
             <Drawer
                 open={open}
                 toggleDrawer={toggleDrawer}
-                handleListItemClick={handleListItemClick}
-                selectedIndex={selectedIndex}
             />
         </>
     )
