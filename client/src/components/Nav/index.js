@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Drawer from '../Drawer';
+import logo from '../../assets/images/logo-white.svg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -15,11 +16,16 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#cc3333"
     },
     menuButton: {
-        marginLeft: theme.spacing(2),
+        marginLeft: "auto"
     },
     title: {
-        flexGrow: 1,
-    },
+        display: "none",
+        [theme.breakpoints.up("sm")]: {
+            flexGrow: 1,
+            display: "block",
+            marginLeft: "1rem"
+        }
+    }
 }));
 
 export default function Nav() {
@@ -47,11 +53,17 @@ export default function Nav() {
         <>
             <AppBar position="static" className={classes.root}>
                 <Toolbar>
+                    <img src={logo} alt="mongo movies logo" width={28} height={28} />
                     <Typography variant="h6" className={classes.title}>
                         MongoMovies
                     </Typography>
-
-                    <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="openDrawer" onClick={openDrawer}>
+                    <IconButton
+                        edge="end"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={openDrawer}
+                    >
                         <MenuIcon />
                     </IconButton>
                 </Toolbar>

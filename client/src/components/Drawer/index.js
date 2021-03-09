@@ -11,24 +11,12 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 const useStyles = makeStyles((theme) => ({
     list: {
         width: 250
+    },
+    link: {
+        textDecoration: "none",
+        color: "inherit"
     }
 }));
-
-// {/* ONLY login/signup pages */}
-// <Link to="/login" className={location === "/login" || location === "/signup" ? "nav-link-active" : "nav-link"} >
-// </Link>
-
-// <Link to="/signup" className={location === "/login" || location === "/signup" ? "nav-link-active" : "nav-link"} >
-// </Link>
-
-// {/* On all BUT login/signup pages */}
-// <Link to="/" className={location !== "/login" && location !== "/signup" ? "nav-link-active" : "nav-link"} >
-// </Link>
-
-// <Link to="/collections" className={location !== "/login" && location !== "/signup" ? "nav-link-active" : "nav-link"} >
-// </Link>
-
-// <Button color="inherit">Logout</Button>
 
 export default function Drawer({ open, toggleDrawer, selectedIndex, handleListItemClick }) {
     const classes = useStyles();
@@ -40,13 +28,19 @@ export default function Drawer({ open, toggleDrawer, selectedIndex, handleListIt
 
                 <List component="nav" aria-label="logged-out links">
 
-                    <ListItem selected={selectedIndex === 0} onClick={() => handleListItemClick(0)} button>
-                        <ListItemText primary="Login" />
-                    </ListItem>
+                    {/* ONLY login/signup pages */}
 
-                    <ListItem selected={selectedIndex === 1} onClick={() => handleListItemClick(1)} button>
-                        <ListItemText primary="Signup" />
-                    </ListItem>
+                    <Link to="/login" className={classes.link}>
+                        <ListItem selected={selectedIndex === 0} onClick={() => handleListItemClick(0)} button>
+                            <ListItemText primary="Login" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/signup" className={classes.link}>
+                        <ListItem selected={selectedIndex === 1} onClick={() => handleListItemClick(1)} button>
+                            <ListItemText primary="Signup" />
+                        </ListItem>
+                    </Link>
 
                 </List>
 
@@ -54,19 +48,25 @@ export default function Drawer({ open, toggleDrawer, selectedIndex, handleListIt
 
                 <List component="nav" aria-label="logged-in links">
 
-                    <ListItem selected={selectedIndex === 2} onClick={() => handleListItemClick(2)} button>
-                        <ListItemIcon>
-                            <HomeIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Home" />
-                    </ListItem>
+                    {/* On all BUT login/signup pages */}
 
-                    <ListItem selected={selectedIndex === 3} onClick={() => handleListItemClick(3)} button>
-                        <ListItemIcon>
-                            <CollectionIcon />
-                        </ListItemIcon>
-                        <ListItemText primary="Collections" />
-                    </ListItem>
+                    <Link to="/" className={classes.link}>
+                        <ListItem selected={selectedIndex === 2} onClick={() => handleListItemClick(2)} button>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Home" />
+                        </ListItem>
+                    </Link>
+
+                    <Link to="/collections" className={classes.link}>
+                        <ListItem selected={selectedIndex === 3} onClick={() => handleListItemClick(3)} button>
+                            <ListItemIcon>
+                                <CollectionIcon />
+                            </ListItemIcon>
+                            <ListItemText primary="Collections" />
+                        </ListItem>
+                    </Link>
 
                     <ListItem selected={selectedIndex === 4} onClick={() => handleListItemClick(4)} button>
                         <ListItemIcon>
