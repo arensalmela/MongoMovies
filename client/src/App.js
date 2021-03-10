@@ -4,6 +4,7 @@ import LoginHooks from './pages/Login/LoginHooks'
 import LogoutHooks from './pages/Logout/LogoutHooks'
 import Home from './pages/Home/Home'
 import Collections from './pages/Collections/Collections';
+import Nav from './components/Nav/index';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
     return (
     <Router>
       <div className="App">
+        <Nav />
         <Route exact path="/login" render={() => (
           <LoginHooks setUser={setUser} />
         )} />

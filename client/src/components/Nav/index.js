@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
+
+import Drawer from '../Drawer';
+import logo from '../../assets/images/logo-white.svg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -13,33 +16,50 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#cc3333"
     },
     menuButton: {
-        marginLeft: theme.spacing(2),
+        marginLeft: "auto"
     },
     title: {
-        flexGrow: 1,
-    },
+        display: "none",
+        [theme.breakpoints.up("sm")]: {
+            flexGrow: 1,
+            display: "block",
+            marginLeft: "1rem"
+        }
+    }
 }));
 
 export default function Nav() {
     const classes = useStyles();
 
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = (e) => {
+        setOpen(!open);
+    };
+
     return (
         <>
             <AppBar position="static" className={classes.root}>
                 <Toolbar>
+                    <img src={logo} alt="mongo movies logo" width={28} height={28} />
                     <Typography variant="h6" className={classes.title}>
                         MongoMovies
                     </Typography>
-                    <Button color="inherit">Home</Button>
-                    <Button color="inherit">Collections</Button>
-                    <Button color="inherit">Logout</Button>
-                    <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
+                    <IconButton
+                        edge="end"
+                        className={classes.menuButton}
+                        color="inherit"
+                        aria-label="open drawer"
+                        onClick={toggleDrawer}
+                    >
                         <MenuIcon />
                     </IconButton>
                 </Toolbar>
             </AppBar>
+            <Drawer
+                open={open}
+                toggleDrawer={toggleDrawer}
+            />
         </>
     )
 }
-
-// export default Nav;
