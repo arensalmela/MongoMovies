@@ -10,7 +10,8 @@ import LogoutIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles((theme) => ({
     list: {
-        width: 250
+        width: 250,
+        paddingTop: 0
     },
     link: {
         textDecoration: "none",
@@ -26,7 +27,7 @@ export default function Drawer({ open, toggleDrawer }) {
         <SwipeableDrawer anchor="right" color="inherit" open={open} onOpen={toggleDrawer} onClose={toggleDrawer}>
             <div className={classes.list} role="presentation" onClick={toggleDrawer} onKeyDown={toggleDrawer}>
 
-                <List component="nav" aria-label="nav links">
+                <List component="nav" aria-label="nav links" className={classes.list}>
                     {
                         (location.pathname === '/login' || location.pathname === '/signup') &&
                         <>
