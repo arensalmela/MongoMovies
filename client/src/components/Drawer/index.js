@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useLocation } from 'react-router-dom'
+import { useGoogleLogout } from "react-google-login";
 
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,6 +8,8 @@ import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import HomeIcon from "@material-ui/icons/Home";
 import CollectionIcon from "@material-ui/icons/Subscriptions";
 import LogoutIcon from "@material-ui/icons/ExitToApp";
+
+const clientId = "123454472770-7dr95o1f2blqnbvudd27d9g4tp592roi.apps.googleusercontent.com";
 
 const useStyles = makeStyles((theme) => ({
     list: {
@@ -19,9 +22,23 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Drawer({ open, toggleDrawer }) {
+export default function Drawer({ open, toggleDrawer, setUser }) {
     const classes = useStyles();
     const location = useLocation()
+
+    const onLogoutSuccess = (res) => {
+        setUser(null)
+    };
+
+    const onFailure = (res) => {
+        console.log("[Logout failed] res:", res);
+    };
+
+    const { signOut } = useGoogleLogout({
+        clientId,
+        onLogoutSuccess,
+        onFailure
+    });
 
     return (
         <SwipeableDrawer anchor="right" color="inherit" open={open} onOpen={toggleDrawer} onClose={toggleDrawer}>
@@ -64,12 +81,14 @@ export default function Drawer({ open, toggleDrawer }) {
                                 </ListItem>
                             </Link>
 
-                            <ListItem button>
+                            {/* <Link to="/logout" className={classes.link}> */}
+                            <ListItem button onClick={signOut}>
                                 <ListItemIcon>
                                     <LogoutIcon />
                                 </ListItemIcon>
                                 <ListItemText primary="Logout" />
                             </ListItem>
+                            {/* </Link> */}
                         </>
                     }
                 </List>
