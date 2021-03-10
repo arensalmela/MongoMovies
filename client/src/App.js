@@ -1,50 +1,37 @@
 import React, { useState } from 'react';
 import './App.css';
-import LoginHooks from './pages/Login/LoginHooks'
-import LogoutHooks from './pages/Logout/LogoutHooks'
+import LoginPage from './pages/Login/Login'
 import Home from './pages/Home/Home'
 import Collections from './pages/Collections/Collections';
 import Nav from './components/Nav/index';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 
 export default function App() {
-    // Random default user to work with in dev.
-  const [user, setUser] = useState({
-    name: "Jim",
-    email: "jim@jim.com",
-    googleID: "1234",
-    watchedMovies: [
-      {
-        title: "Titanic",
-        poster: "./assets/images/logo-red.svg",
-        released: "Date",
-        overview: "Movie overview goes here",
-        apiID: "123456789"
-      }
-    ],
-    unwatchedMovies: [
-      {
-        title: "Finding Nemo",
-        poster: "./assets/images/logo-red.svg",
-        released: "Date",
-        overview: "Movie overview goes here",
-        apiID: "123456781"
-      }
-    ]
-  });
+  const [user, setUser] = useState(null);
 
-    return (
+  return (
     <Router>
       <div className="App">
-        <Nav />
-        <Route exact path="/login" render={() => (
-          <LoginHooks setUser={setUser} />
-        )} />
-        <Route exact path="/logout" render={() => (
-          <LogoutHooks setUser={setUser} />
-        )} />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/collections" component={Collections} />
+        <Nav setUser={setUser} />
+        <Route exact path="/login" >
+          {user ? <Redirect to="/" /> : <LoginPage setUser={setUser} type="Login" />}
+        </Route>
+
+        <Route exact path="/signup">
+          {user ? <Redirect to="/" /> : <LoginPage setUser={setUser} type="Signup" />}
+        </Route>
+
+        <Route exact path="/logout" >
+          <Redirect to="/login" />
+        </Route>
+
+        <Route exact path="/collections">
+          {!user ? <Redirect to="/login" /> : <Collections />}
+        </Route>
+
+        <Route path="/">
+          {!user ? <Redirect to="/login" /> : <Home />}
+        </Route>
       </div>
     </Router>
   );
