@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiKey = axios.get('/apiKey');
+//const apiKey = axios.get('/apiKey');
     
 const API =  {
 
@@ -9,7 +9,7 @@ const API =  {
     },
 
     query: function(searchTerm) {
-        return axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchTerm}&page=1&include_adult=false`)
+        return axios.get('/search', {movieSearch: searchTerm})
     },
 
     newUser: function(user) {
