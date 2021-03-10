@@ -18,12 +18,11 @@ module.exports = {
         $push: {
           movies: {
             title: req.body.title,
-            poster: req.body.poster,
-            released: req.body.released,
+            poster: req.body.poster_path,
+            released: req.body.release_date,
             overview: req.body.overview,
-            apiID: req.body.apiID,
+            apiID: req.body.id,
             watched: true,
-            runtime: req.body.runtime,
           },
         },
       }

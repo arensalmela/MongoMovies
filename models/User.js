@@ -13,7 +13,6 @@ const userSchema = new Schema({
       overview: { type: String },
       apiID: { type: String },
       watched: { type: Boolean },
-      runtime: { type: String },
     },
   ],
 });
