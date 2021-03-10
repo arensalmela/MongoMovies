@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function Nav() {
+export default function Nav({ setUser }) {
     const classes = useStyles();
 
     const [open, setOpen] = useState(false);
@@ -59,6 +59,7 @@ export default function Nav() {
             <Drawer
                 open={open}
                 toggleDrawer={toggleDrawer}
+                setUser={setUser}
             />
         </>
     )

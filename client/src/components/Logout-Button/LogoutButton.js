@@ -1,23 +1,23 @@
-import "../Login/Login.css"
+import "../../components/Login/Login.css"
 import GoogleIcon from "../../assets/images/googleicon.svg"
 import React from "react";
 import { useGoogleLogout } from "react-google-login";
 
 const clientId = "123454472770-7dr95o1f2blqnbvudd27d9g4tp592roi.apps.googleusercontent.com";
 
-function LogoutHooks() {
+export default function LogoutButton() {
   const onLogoutSuccess = (res) => {
-    alert("You have Successfully Logged Out")
+    alert("You have Logged Out")
   };
 
-  const onFailure = () => {
-    console.log("Handle Failure Cases");
+  const onFailure = (res) => {
+    console.log("[Logout failed] res:", res);
   };
 
   const { signOut } = useGoogleLogout({
     clientId,
     onLogoutSuccess,
-    onFailure,
+    onFailure
   });
 
   return (
@@ -27,5 +27,3 @@ function LogoutHooks() {
     </button>
   );
 }
-
-export default LogoutHooks;
