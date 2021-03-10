@@ -1,18 +1,3 @@
-// import React from "react";
-// import API from "../../utils/API";
-// import Nav from "../../components/Nav/index";
-// import { TextField } from "@material-ui/core";
-// import "./style.css";
-
-// export default function Search({ user }) {
-//   return (
-//     <>
-//     <h1> Welcome, {user}!</h1>
-//       <TextField id="outlined-basic" label="Search Movies" variant="outlined" />
-//     </>
-//   );
-// }
-
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
@@ -29,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: fade(theme.palette.common.white, 0.25)
     },
     marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
+    marginInline: "auto",
+    width: "25px",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(3),
       width: "auto"
@@ -53,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
-    width: "100%",
+    width: "50%",
     [theme.breakpoints.up("md")]: {
       width: "20ch"
     }
@@ -66,6 +51,8 @@ export default function Search({user}) {
   return (
       <>
       <h1>Welcome, {user}!</h1>
+    
+    {/* Still need to fix the CSS on the search input */}
     <div className={classes.search}>
       <div className={classes.searchIcon}>
         <SearchIcon />

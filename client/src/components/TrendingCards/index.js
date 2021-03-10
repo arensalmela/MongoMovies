@@ -1,62 +1,239 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardActions from "@material-ui/core/CardActions";
+import IconButton from "@material-ui/core/IconButton";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import AddIcon from "@material-ui/icons/Add";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
-const styles = {
-  card: {
-    minWidth: 275,
+const useStyles = makeStyles((theme) => ({
+  root: {
+    maxWidth: 345
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  media: {
+    height: 0,
+    paddingTop: "56.25%" // 16:9
   },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-};
+  expand: {
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
+  }
+}));
 
-function TrendingCards(props) {
-  const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+export default function TrendingCards() {
+  const classes = useStyles();
 
   return (
-    <div>
-      <Card className={classes.card}>
-        <CardContent>
-          <Typography className={classes.title} color="textSecondary">
-            Word of the Day
-          </Typography>
-          <Typography variant="headline" component="h2">
-            be{bull}nev{bull}o{bull}lent
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            adjective
-          </Typography>
-          <Typography component="p">
-            well meaning and kindly.<br />
-            {'"a benevolent smile"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
-    </div>
+    <>
+    {/* Fix the formatting of the cards */}
+      <Container>
+        <Grid container margin = {2} spacing={3}>
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={3}>
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+
+          <Grid item xs={6}>
+            <Card className={classes.root}>
+              <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
+              <CardMedia
+                className={classes.media}
+                image="/static/images/cards/paella.jpg"
+                title="Paella dish"
+              />
+              <CardActions disableSpacing>
+                <IconButton aria-label="add to favorites">
+                  <FavoriteIcon />
+                </IconButton>
+                <IconButton aria-label="share">
+                  <AddIcon />
+                </IconButton>
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
   );
 }
-
-TrendingCards.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(TrendingCards);
