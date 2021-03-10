@@ -4,6 +4,7 @@ const express = require("express");
 
 const mongoose = require("mongoose");
 const routes = require("./routes/api/user-routes");
+const profileRoutes = require("./routes/api/profile-routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
@@ -23,6 +24,8 @@ app.get("/apiKey", (req, res) => {
 
 app.use(routes);
 app.use(movieRoutes);
+app.use(profileRoutes);
+
 // Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/MongoMoviesDB",
