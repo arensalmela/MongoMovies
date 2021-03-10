@@ -13,16 +13,15 @@ function App() {
     name: "Jim",
     email: "jim@jim.com",
     googleID: "1234",
-    watchedMovies: [
+    movies: [
       {
         title: "Titanic",
         poster: "./assets/images/logo-red.svg",
         released: "Date",
         overview: "Movie overview goes here",
         apiID: "123456789"
-      }
-    ],
-    unwatchedMovies: [
+      },
+
       {
         title: "Finding Nemo",
         poster: "./assets/images/logo-red.svg",
