@@ -6,9 +6,8 @@ import Home from './pages/Home/Home'
 import Collections from './pages/Collections/Collections';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-
-function App() {
-  // Random default user to work with in dev.
+export default function App() {
+    // Random default user to work with in dev.
   const [user, setUser] = useState({
     name: "Jim",
     email: "jim@jim.com",
@@ -33,7 +32,7 @@ function App() {
     ]
   });
 
-  return (
+    return (
     <Router>
       <div className="App">
         <Route exact path="/login" render={() => (
@@ -48,5 +47,3 @@ function App() {
     </Router>
   );
 }
-
-export default App;
