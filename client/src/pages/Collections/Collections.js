@@ -1,12 +1,10 @@
-import React from 'react';
-import API from '../../utils/API';
+import React from "react";
+import API from "../../utils/API";
+import Search from "../../components/Search";
+import CardGrid from '../../components/CardGrid'
 
-function Collections({ user }) {
-    return (
-        <>
-            <h1>Collections</h1>
-        </>
-    )
+export default function Collections({ user }) {
+  return (
+      <CardGrid/>
+  );
 }
-
-export default Collections;
