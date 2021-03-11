@@ -10,6 +10,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import API from '../../utils/API';
+import { CardContent } from "@material-ui/core";
 // import logoRed from "../../assets/images/logo-red.svg"
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +56,12 @@ export default function TrendingCards() {
                       image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                       title="Movie poster"
                     />
+                    <CardContent>
+                      <details>
+                        <summary>Overview</summary>
+                        {movie.overview}
+                      </details>
+                    </CardContent>
                     <CardActions disableSpacing>
                       <IconButton aria-label="add to favorites">
                         <FavoriteIcon />
