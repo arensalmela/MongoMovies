@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -10,13 +10,14 @@ import AddIcon from "@material-ui/icons/Add";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import API from '../../utils/API';
+import logoRed from "../../assets/images/logo-red.svg"
 
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345
   },
   media: {
-    height: 0,
+    height: "300px",
     paddingTop: "56.25%" // 16:9
   },
   expand: {
@@ -31,49 +32,49 @@ const useStyles = makeStyles((theme) => ({
 export default function TrendingCards() {
   const classes = useStyles();
   const [trending, setTrending] = useState([]);
-  
+
   useEffect(() => {
     API.trending()
-      .then(data => setTrending(data.results));
-  })
-  
+      .then(({ data }) => setTrending(data.results));
+  }, [])
+
 
   return (
     <>
-    {/* Fix the formatting of the cards */}
+      {/* Fix the formatting of the cards */}
       <Container>
-        <Grid container margin = {2} spacing={3}>
-              {
-                trending?.map(movie => {
-                return (
-          <Grid item xs={6}>
-            <Card className={classes.root} key={movie.id}>
-              <CardHeader title={movie.results.title} subheader={movie.results.release_date} />
-              <CardMedia
-                className={classes.media}
-                image={movie.results.poster_path}
-                title="Movie poster"
-              />
-              <CardActions disableSpacing>
-                <IconButton aria-label="add to favorites">
-                  <FavoriteIcon />
-                </IconButton>
-                <IconButton aria-label="share">
-                  <AddIcon />
-                </IconButton>
-              </CardActions>
-            </Card>
-          </Grid>
-                )
-              })
+        <Grid container margin={2} spacing={3}>
+          {
+            trending.length && trending.map(movie => {
+              return (
+                <Grid item xs={6} key={movie.id}>
+                  <Card className={classes.root}>
+                    <CardHeader title={movie.title} subheader={movie.release_date} />
+                    <CardMedia
+                      className={classes.media}
+                      image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                      title="Movie poster"
+                    />
+                    <CardActions disableSpacing>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <IconButton aria-label="share">
+                        <AddIcon />
+                      </IconButton>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              )
+            })
           }
 
-            <Grid item xs={6}>
+          <Grid item xs={6}>
             <Card className={classes.root}>
               <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
               <CardMedia
                 className={classes.media}
-                image="../../assets/images/logo-red.svg"
+                image={logoRed}
                 title="Paella dish"
               />
               <CardActions disableSpacing>
