@@ -10,7 +10,7 @@ import AddIcon from "@material-ui/icons/Add";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import API from '../../utils/API';
-import logoRed from "../../assets/images/logo-red.svg"
+// import logoRed from "../../assets/images/logo-red.svg"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +69,7 @@ export default function TrendingCards() {
             })
           }
 
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <Card className={classes.root}>
               <CardHeader title="Title Here?" subheader="Released: XXDATEXX" />
               <CardMedia
@@ -86,7 +86,7 @@ export default function TrendingCards() {
                 </IconButton>
               </CardActions>
             </Card>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </>
