@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <PageTitle title={`Welcome, ${user.name}`} />
+      <PageTitle title={`Welcome, ${user.name}!`} />
       <CardGrid />
     </>
   );
