@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
+import UserContext from '../../utils/UserContext'
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -45,27 +46,28 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Search({user}) {
+export default function Search() {
   const classes = useStyles();
+  const user = useContext(UserContext)
 
   return (
-      <>
-      <h1>Welcome, {user}!</h1>
-    
-    {/* Still need to fix the CSS on the search input */}
-    <div className={classes.search}>
-      <div className={classes.searchIcon}>
-        <SearchIcon />
+    <>
+      <h1>Welcome, {user.name}!</h1>
+
+      {/* Still need to fix the CSS on the search input */}
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
+        </div>
+        <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput
+          }}
+          inputProps={{ "aria-label": "search" }}
+        />
       </div>
-      <InputBase
-        placeholder="Search…"
-        classes={{
-          root: classes.inputRoot,
-          input: classes.inputInput
-        }}
-        inputProps={{ "aria-label": "search" }}
-      />
-    </div>
     </>
   );
 }
