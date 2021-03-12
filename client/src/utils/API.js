@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-//const apiKey = axios.get('/apiKey');
-
 const API = {
 
     trending: function () {
@@ -17,7 +15,7 @@ const API = {
     },
 
     addMovie: function (movie, email) {
-        const body = { ...movie, ...email }
+        const body = { ...movie, email }
         return axios.post('/userProfileAdd', body)
     },
 

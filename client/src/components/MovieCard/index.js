@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -10,6 +10,8 @@ import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import { CardContent } from "@material-ui/core";
 import { useLocation } from 'react-router';
+import API from '../../utils/API';
+import UserContext from '../../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -34,6 +36,12 @@ const useStyles = makeStyles((theme) => ({
 export default function MovieCard({ movie }) {
     const classes = useStyles();
     const location = useLocation()
+    const user = useContext(UserContext)
+
+    const handleAddMovie = () => {
+        API.addMovie(movie, user.email)
+            .then(({ data }) => console.log("success!", data.nModified, " modified"))
+    }
 
     return (
         <Grid item xs={6}>
@@ -58,7 +66,7 @@ export default function MovieCard({ movie }) {
                                 <FavoriteIcon />
                             </IconButton>
                             :
-                            <IconButton aria-label="share">
+                            <IconButton aria-label="share" onClick={handleAddMovie}>
                                 <AddIcon />
                                 <span className={classes.text}>Add to Collection</span>
                             </IconButton>
