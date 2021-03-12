@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-import UserContext from '../../utils/UserContext'
+import UserContext from '../../utils/UserContext';
+import Grid from "@material-ui/core/Grid";
 import './style.css'
 
 const useStyles = makeStyles((theme) => ({
@@ -55,6 +56,7 @@ export default function Search() {
       <h1>Welcome, {user.name}!</h1>
 
       {/* Still need to fix the CSS on the search input */}
+      <Grid item xs={6}>
       <div className={classes.search}>
         <div className={classes.searchIcon}>
           <SearchIcon />
@@ -65,9 +67,10 @@ export default function Search() {
             root: classes.inputRoot,
             input: classes.inputInput
           }}
-          inputProps={{ "aria-label": "search" }}
+          inputProps={{ "aria-label": "search"}}
         />
       </div>
+      </Grid>
     </>
   );
 }

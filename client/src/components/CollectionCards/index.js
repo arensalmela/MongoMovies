@@ -5,13 +5,14 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
-import AddIcon from "@material-ui/icons/Add";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import API from '../../utils/API';
 import { CardContent } from "@material-ui/core";
 // import logoRed from "../../assets/images/logo-red.svg"
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function TrendingCards() {
+export default function CollectionCards() {
   const classes = useStyles();
   const [trending, setTrending] = useState([]);
 
@@ -64,11 +65,9 @@ export default function TrendingCards() {
                     </CardContent>
                     <CardActions disableSpacing>
                       <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                        <VisibilityIcon />
                       </IconButton>
-                      <IconButton aria-label="share">
-                        <AddIcon />
-                      </IconButton>
+                      
                     </CardActions>
                   </Card>
                 </Grid>

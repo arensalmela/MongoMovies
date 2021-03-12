@@ -1,11 +1,14 @@
+import { Container } from "@material-ui/core";
 import React from "react";
+import CollectionCards from "../../components/CollectionCards"
 // import API from "../../utils/API";
-// import Search from "../../components/Search";
-// import CardGrid from '../../components/CardGrid'
 
-export default function Collections({ user }) {
+export default function Home() {
+
   return (
-    // <CardGrid/>
-    <h1>Collections!</h1>
+    <>
+      <h1>Your Movie Collections</h1>
+        <CollectionCards />
+    </>
   );
-}
+};
