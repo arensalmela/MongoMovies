@@ -7,7 +7,7 @@ const API = {
     },
 
     query: function (query) {
-        return axios.get('/search', query)
+        return axios.get(`/search/${query}`)
     },
 
     newUser: function (user) {
