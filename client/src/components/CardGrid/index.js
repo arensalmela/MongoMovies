@@ -22,11 +22,19 @@ export default function CardGrid() {
   const [query, setQuery] = useState("");
   const [trending, setTrending] = useState([]);
 
-  // Display trending movies when component mounts
+  // Get trending movies on mount
   useEffect(() => {
     API.trending()
       .then(({ data }) => setTrending(data.results));
   }, [])
+
+  // Search for movie whenever query changes
+  useEffect(() => {
+    // Don't call API if query is empty (prevents firing on mount)
+    query &&
+      API.query(query)
+        .then(({ data }) => setTrending(data.results))
+  }, [query])
 
   return (
     <div className={classes.root} >
@@ -35,7 +43,7 @@ export default function CardGrid() {
           <Paper className={classes.paper}>
             <Search query={query} setQuery={setQuery} />
             <br></br>
-            <TrendingCards />
+            <TrendingCards trending={trending} />
           </Paper>
         </Grid>
       </Grid>
