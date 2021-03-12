@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardGrid from "../../components/CardGrid";
-// import API from "../../utils/API";
+import PageTitle from "../../components/PageTitle";
+import UserContext from '../../utils/UserContext';
 
 export default function Home() {
+  const user = useContext(UserContext)
 
   return (
     <>
-      <h1>Home!</h1>
+      <PageTitle title={`Welcome, ${user.name}!`} />
       <CardGrid />
     </>
   );

@@ -5,6 +5,7 @@ import React from "react";
 import { useGoogleLogin } from "react-google-login";
 //import { refreshTokenSetup } from "react-google-login"
 import API from "../../utils/API";
+import PageTitle from "../../components/PageTitle";
 
 const clientId = "123454472770-7dr95o1f2blqnbvudd27d9g4tp592roi.apps.googleusercontent.com";
 
@@ -30,10 +31,13 @@ function Login({ setUser, type }) {
   });
 
   return (
-    <button onClick={signIn} className="button">
-      <img src={GoogleIcon} alt="google icon" className="icon"></img>
-      <span className="buttonText">{type} With Google</span>
-    </button>
+    <>
+      <PageTitle title={`${type} ${type === 'Login' ? 'to your' : 'for a new'} account`} />
+      <button onClick={signIn} className="button">
+        <img src={GoogleIcon} alt="google icon" className="icon"></img>
+        <span className="buttonText">{type} With Google</span>
+      </button>
+    </>
   );
 }
 
