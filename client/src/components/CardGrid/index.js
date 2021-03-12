@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CardGrid({user}) {
+export default function CardGrid() {
   const classes = useStyles();
 
   return (
@@ -24,9 +24,9 @@ export default function CardGrid({user}) {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-          <Search />
-          <br></br>
-          <TrendingCards/>
+            <Search />
+            <br></br>
+            <TrendingCards />
           </Paper>
         </Grid>
       </Grid>
