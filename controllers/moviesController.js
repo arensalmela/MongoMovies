@@ -15,8 +15,8 @@ module.exports = {
 
   
   search: function (req, res) {
-    const movieSearch = req.params.query
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&language=en-US&query=${movieSearch}page=1&include_adult=false`)
+    const movieSearch = req.body.query
+    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`)
       .then((response) => response.json())
       .then((data) => res.json(data));
   },

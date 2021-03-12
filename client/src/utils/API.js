@@ -6,8 +6,8 @@ const API = {
         return axios.get('/trending')
     },
 
-    query: function (searchTerm) {
-        return axios.get('/search', { movieSearch: searchTerm })
+    query: function (query) {
+        return axios.get('/search', query)
     },
 
     newUser: function (user) {
@@ -23,7 +23,7 @@ const API = {
         return axios.get('userProfile', email)
     }
 
-    
+
 
 }
 
