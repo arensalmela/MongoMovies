@@ -8,10 +8,10 @@ const userSchema = new Schema({
   movies: [
     {
       title: { type: String },
-      poster: { type: String },
-      released: { type: String },
+      poster_path: { type: String },
+      release_date: { type: String },
       overview: { type: String },
-      apiID: { type: String },
+      id: { type: String },
       watched: { type: Boolean },
     },
   ],
