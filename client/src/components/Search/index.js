@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
-import UserContext from '../../utils/UserContext';
 import Grid from "@material-ui/core/Grid";
 import './style.css'
 
@@ -49,12 +48,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Search() {
   const classes = useStyles();
-  const user = useContext(UserContext)
 
   return (
     <>
-      <h1>Welcome, {user.name}!</h1>
-
       {/* Still need to fix the CSS on the search input */}
       <Grid item xs={6}>
       <div className={classes.search}>
