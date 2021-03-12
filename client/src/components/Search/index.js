@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import './style.css'
@@ -17,9 +17,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function Search() {
+export default function Search({ query, setQuery }) {
   const classes = useStyles();
-  const [query, setQuery] = useState("");
 
   let timeout;
 
