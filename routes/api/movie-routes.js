@@ -5,6 +5,7 @@ const moviesController = require("../../controllers/moviesController");
 //Populating trending page
 router.route("/trending").get(moviesController.trending);
 
+//Populates trending page with search criteria
 router.route("/search").get(moviesController.search);
 
 module.exports = router;

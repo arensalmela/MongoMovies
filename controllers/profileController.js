@@ -18,14 +18,28 @@ module.exports = {
         $push: {
           movies: {
             title: req.body.title,
-            poster: req.body.poster_path,
-            released: req.body.release_date,
+            poster_path: req.body.poster_path,
+            release_date: req.body.release_date,
             overview: req.body.overview,
-            apiID: req.body.id,
-            watched: true,
+            id: req.body.id,
+            watched: false,
           },
         },
       }
     ).then((data) => res.json(data));
+  },
+
+  updateMovietoWatched: function (req, res) {
+    console.log(req.body);
+    db.User.updateOne(
+      { email: req.body.email, "movies.title": req.body.title },
+      {
+        $set: {
+          "movies.$.watched": true,
+        },
+      }
+    )
+      .then((data) => res.json(data))
+      .catch((err) => res.json(err));
   },
 };

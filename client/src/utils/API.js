@@ -23,6 +23,8 @@ const API = {
         return axios.get('userProfile', email)
     }
 
+    
+
 }
 
 export default API;
