@@ -13,39 +13,25 @@ const userSeed = [
     movies: [
       {
         title: "Toy Story",
-        poster: "Movie Poster Toy Story",
-        released: "1999",
+        poster_path: "Movie Poster Toy Story",
+        release_date: "1999",
         overview: "Toy Story Overview",
-        apiID: "API ID",
-        watched: true,
-        runtime: "Not long enough",
+        id: "API ID",
+        watched: false,
+      
       },
       {
         title: "Toy Story 2",
-        poster: "Movie Poster Toy Story 2",
-        released: "2001",
+        poster_path: "Movie Poster Toy Story 2",
+        release_date: "2001",
         overview: "Toy Story 2 Overview",
-        apiID: "API ID",
-        watched: true,
-        runtime: "Too Long",
+        id: "API ID",
+        watched: false,
+        
       },
     ],
   },
-  {
-    name: "bbaa",
-    email: "b@b.com",
-    googleID: "bb",
-  },
-  {
-    name: "ddcc",
-    email: "c@c.com",
-    googleID: "cc",
-  },
-  {
-    name: "ccdd",
-    email: "d@d.com",
-    googleID: "dd",
-  },
+  
 ];
 
 // db.User
