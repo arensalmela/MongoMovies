@@ -20,8 +20,8 @@ export default function CardGrid() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={2}>
+    <div className={classes.root} >
+      <Grid container spacing={2} alignContent="center">
         <Grid item xs={12}>
           <Paper className={classes.paper}>
             <Search />
