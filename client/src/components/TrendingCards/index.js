@@ -1,17 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import API from '../../utils/API';
 import MovieCard from "../MovieCard";
 // import logoRed from "../../assets/images/logo-red.svg"
 
-export default function TrendingCards() {
-  const [trending, setTrending] = useState([]);
-
-  useEffect(() => {
-    API.trending()
-      .then(({ data }) => setTrending(data.results));
-  }, [])
+export default function TrendingCards({ trending }) {
 
   return (
     <>
