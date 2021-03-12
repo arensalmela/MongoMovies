@@ -9,7 +9,7 @@ const db = require("../models");
 
 module.exports = {
   userProfile: function (req, res) {
-    db.User.findOne({ email: req.params.email }).then((data) => res.json(data));
+    db.User.findOne({ email: req.body.email }).then((data) => res.json(data));
   },
   addMovieToProfile: function (req, res) {
     db.User.updateOne(
