@@ -3,7 +3,7 @@ const router = require("express").Router();
 const profileController = require("../../controllers/profileController");
 
 //Populating trending page
-router.route("/userProfile/:email").get(profileController.userProfile);
+router.route("/userProfile").get(profileController.userProfile);
 router.route("/userProfileAdd").post(profileController.addMovieToProfile);
 
 module.exports = router;
