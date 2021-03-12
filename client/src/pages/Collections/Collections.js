@@ -1,14 +1,13 @@
-import { Container } from "@material-ui/core";
 import React from "react";
 import CollectionCards from "../../components/CollectionCards"
-// import API from "../../utils/API";
+import PageTitle from "../../components/PageTitle";
 
 export default function Home() {
 
   return (
     <>
-      <h1>Your Movie Collections</h1>
-        <CollectionCards />
+      <PageTitle title="Your Movie Collections" />
+      <CollectionCards />
     </>
   );
 };

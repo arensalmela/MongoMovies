@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import CardGrid from "../../components/CardGrid";
-// import API from "../../utils/API";
+import PageTitle from "../../components/PageTitle";
 import UserContext from '../../utils/UserContext';
 
 export default function Home() {
@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <>
-      <h1>Welcome, {user.name}!</h1>
+      <PageTitle title={`Welcome, ${user.name}`} />
       <CardGrid />
     </>
   );
