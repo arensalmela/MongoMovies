@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -10,10 +10,26 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import { CardContent } from "@material-ui/core";
+import Rating from '@material-ui/lab/Rating';
+import Box from '@material-ui/core/Box';
+
 import { useLocation } from 'react-router';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
 
+// labels for ⭐ rating
+const labels = {
+    0.5: 'Useless',
+    1: 'Useless+',
+    1.5: 'Poor',
+    2: 'Poor+',
+    2.5: 'Ok',
+    3: 'Ok+',
+    3.5: 'Good',
+    4: 'Good+',
+    4.5: 'Excellent',
+    5: 'Excellent+',
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,6 +49,12 @@ const useStyles = makeStyles((theme) => ({
     },
     text: {
         fontSize: "1rem"
+    },
+    rating: {
+        width: 200,
+        display: 'flex',
+        alignItems: 'center',
+        marginLeft: "auto"
     }
 }));
 
@@ -41,6 +63,10 @@ export default function MovieCard({ movie, updateUsers }) {
     const location = useLocation();
     const user = useContext(UserContext);
 
+    const [value, setValue] = useState(2);
+    // index of value when user hovers
+    const [hover, setHover] = useState(-1);
+
     const handleAddMovie = () => {
         API.addMovie(movie, user.email)
             .then(({ data }) => console.log("success!", data.nModified, " modified"))
@@ -48,6 +74,11 @@ export default function MovieCard({ movie, updateUsers }) {
 
     const toggleWatched = (isWatched) => {
         API.toggleWatched(user.email, movie.title, isWatched)
+            .then(() => updateUsers())
+    }
+
+    const updateRating = (event) => {
+        API.updateRating(user.email, movie.title, event.target.value)
             .then(() => updateUsers())
     }
 
@@ -68,20 +99,40 @@ export default function MovieCard({ movie, updateUsers }) {
                 </CardContent>
                 <CardActions disableSpacing>
                     {
-                        location.pathname === '/collections' ?
-                            <IconButton aria-label="add to favorites" onClick={() => toggleWatched(!movie.watched)}>
+                        location.pathname === '/collections' ? (
+                            <>
+                                <IconButton aria-label="add to favorites" onClick={() => toggleWatched(!movie.watched)}>
+                                    {
+                                        !movie.watched && <VisibilityOffIcon />
+                                    }
+                                    {
+                                        movie.watched && <VisibilityIcon />
+                                    }
+                                </IconButton>
                                 {
-                                    !movie.watched && <VisibilityOffIcon />
+                                    movie.watched && <div className={classes.rating}>
+                                        <Rating
+                                            name="hover-feedback"
+                                            value={value}
+                                            precision={0.5}
+                                            onChange={(event, newValue) => {
+                                                setValue(newValue);
+                                                updateRating(event)
+                                            }}
+                                            onChangeActive={(event, newHover) => {
+                                                setHover(newHover);
+                                            }}
+                                        />
+                                        {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
+                                    </div>
                                 }
-                                {
-                                    movie.watched && <VisibilityIcon />
-                                }
-                            </IconButton>
-                            :
+                            </>
+                        ) : (
                             <IconButton aria-label="share" onClick={handleAddMovie}>
                                 <AddIcon />
                                 <span className={classes.text}> Add to Collections</span>
                             </IconButton>
+                        )
                     }
                 </CardActions>
             </Card>
