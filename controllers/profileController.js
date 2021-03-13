@@ -9,7 +9,9 @@ const db = require("../models");
 
 module.exports = {
   userProfile: function (req, res) {
-    db.User.findOne({ googleID: req.params.googleId }).then((data) => res.json(data));
+    db.User.findOne({ googleID: req.params.googleId }).then((data) =>
+      res.json(data)
+    );
   },
   addMovieToProfile: function (req, res) {
     db.User.updateOne(
@@ -36,6 +38,20 @@ module.exports = {
       {
         $set: {
           "movies.$.watched": req.body.isWatched,
+        },
+      }
+    )
+      .then((data) => res.json(data))
+      .catch((err) => res.json(err));
+  },
+
+  rating: function (req, res) {
+    console.log(req.body);
+    db.User.updateOne(
+      { email: req.body.email, "movies.title": req.body.title },
+      {
+        $set: {
+          "movies.$.rating": req.body.rating,
         },
       }
     )

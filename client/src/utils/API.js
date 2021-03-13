@@ -25,6 +25,10 @@ const API = {
 
     toggleWatched: function (email, title, isWatched) {
         return axios.put('watched', { email, title, isWatched })
+    },
+
+    setRating: function (email, title, rating) {
+        return axios.put('rating', { email, title, rating })
     }
 
 }
