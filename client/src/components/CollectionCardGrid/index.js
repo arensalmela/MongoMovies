@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "auto",
     marginRight: "auto",
     boxShadow: ".25rem .25rem 1rem #440000"
-  },
-  column: {
-
   }
 }));
 
