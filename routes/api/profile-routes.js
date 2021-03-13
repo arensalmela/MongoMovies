@@ -9,6 +9,6 @@ router.route("/userProfile/:googleId").get(profileController.userProfile);
 router.route("/userProfileAdd").post(profileController.addMovieToProfile);
 
 //Updates movie to watched on user collection
-router.route("/watched").post(profileController.updateMovietoWatched);
+router.route("/watched").put(profileController.updateMovietoWatched);
 
 module.exports = router;

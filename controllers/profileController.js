@@ -35,7 +35,7 @@ module.exports = {
       { email: req.body.email, "movies.title": req.body.title },
       {
         $set: {
-          "movies.$.watched": true,
+          "movies.$.watched": req.body.isWatched,
         },
       }
     )
