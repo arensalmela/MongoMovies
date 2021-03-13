@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import CollectionCards from "../CollectionCards";
 import API from "../../utils/API";
+import UserContext from "../../utils/UserContext";
+import MovieCard from "../MovieCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,30 +19,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CollectionCardGrid() {
   const classes = useStyles();
-  const [getUserProfile, setUserProfile] = useState("");
-
-  const [addMovie, setAddMovie] = useState([]);
+  const user = useContext(UserContext);
+  const [userMovies, setUserMovies] = useState([]);
 
   // Get collections movies on mount
   useEffect(() => {
-    API.addMovie()
-      .then(({ data }) => setAddMovie(data.results));
-  }, [])
-
-  // Search for movie whenever query changes
-  useEffect(() => {
-  //   // Don't call API if query is empty (prevents firing on mount)
-    getUserProfile &&
-      API.getUserProfile()
-        .then(({ data }) => setUserProfile(data.results))
-  }, [getUserProfile])
+    API.getUserProfile(user.googleID)
+      .then(({ data }) => setUserMovies(data.movies));
+  }, [user])
 
   return (
     <div className={classes.root} >
       <Grid container spacing={2} alignContent="center">
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <CollectionCards addMovie={addMovie} />
+            {
+              userMovies.length
+                ? userMovies.map(movie => (
+                  <MovieCard movie={movie} key={movie.id} />
+                ))
+                : <h2>You haven't added any movies yet!</h2>
+            }
           </Paper>
         </Grid>
       </Grid>

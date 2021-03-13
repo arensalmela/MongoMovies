@@ -34,8 +34,7 @@ export default function Search({ query, setQuery }) {
 
   return (
     <>
-    <Grid container justify="
-    center" alignItems="center" direction="column">
+    <Grid container justify="center" alignItems="center" direction="column">
       <TextField
         className={classes.search}
         label={query && "Search for movies"}

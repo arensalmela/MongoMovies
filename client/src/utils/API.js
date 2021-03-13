@@ -19,8 +19,8 @@ const API = {
         return axios.post('/userProfileAdd', body)
     },
 
-    getUserProfile: function (email) {
-        return axios.get('userProfile', email)
+    getUserProfile: function (googleId) {
+        return axios.get(`/userProfile/${googleId}`)
     }
 
 
