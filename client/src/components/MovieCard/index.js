@@ -52,7 +52,7 @@ export default function MovieCard({ movie, updateUsers }) {
 
     return (
         <Grid item xs={location.pathname === '/collections' ? 12 : 6}>
-            <Card className={classes.root}>
+            <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto" }}>
                 <CardHeader title={movie.title} subheader={"Release Date: " + movie.release_date} />
                 <CardMedia
                     className={classes.media}

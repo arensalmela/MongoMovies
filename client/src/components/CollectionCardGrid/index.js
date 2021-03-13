@@ -8,7 +8,8 @@ import MovieCard from "../MovieCard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    textAlign: "center"
   },
   paper: {
     padding: theme.spacing(2),
@@ -37,8 +38,8 @@ export default function CollectionCardGrid() {
   }, [])
 
   return (
-    <div className={classes.root} >
-      <Grid container spacing={2} alignContent="center">
+    <div className={classes.root}>
+      <Grid container spacing={2}>
 
         <Grid item xs={6} id="Unwatched">
           <h3>Unwatched</h3>
