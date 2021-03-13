@@ -13,7 +13,11 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    backgroundColor: "#811",
+  },
+  column: {
+
   }
 }));
 
@@ -35,12 +39,33 @@ export default function CollectionCardGrid() {
   return (
     <div className={classes.root} >
       <Grid container spacing={2} alignContent="center">
-        <Grid item xs={12}>
+
+        <Grid item xs={6} id="Unwatched">
+          <h3>Unwatched</h3>
           <Paper className={classes.paper}>
             {
               userMovies.length
                 ? userMovies.map(movie => (
-                  <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
+                  <>
+                    <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
+                    <br />
+                  </>
+                ))
+                : <h2>You haven't added any movies yet!</h2>
+            }
+          </Paper>
+        </Grid>
+
+        <Grid item xs={6} id="Watched">
+          <h3>Watched</h3>
+          <Paper className={classes.paper}>
+            {
+              userMovies.length
+                ? userMovies.map(movie => (
+                  <>
+                    <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
+                    <br />
+                  </>
                 ))
                 : <h2>You haven't added any movies yet!</h2>
             }
