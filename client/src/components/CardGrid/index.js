@@ -41,7 +41,7 @@ export default function CardGrid() {
       <Grid container spacing={2} alignContent="center">
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Search query={query} setQuery={setQuery} />
+              <Search query={query} setQuery={setQuery} />
             <br></br>
             <TrendingCards trending={trending} />
           </Paper>

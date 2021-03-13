@@ -11,8 +11,6 @@ import API from '../../utils/API';
 import { CardContent } from "@material-ui/core";
 // import logoRed from "../../assets/images/logo-red.svg"
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,7 +65,6 @@ export default function CollectionCards() {
                       <IconButton aria-label="add to favorites">
                         <VisibilityIcon />
                       </IconButton>
-                      
                     </CardActions>
                   </Card>
                 </Grid>

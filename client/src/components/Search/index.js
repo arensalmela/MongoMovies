@@ -2,12 +2,12 @@ import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 import './style.css'
-import { TextField } from "@material-ui/core";
+import { Grid, TextField, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
-    width: "75%",
+    width: "50%",
     marginRight: "auto",
     marginLeft: "auto"
   },
@@ -33,7 +33,9 @@ export default function Search({ query, setQuery }) {
   };
 
   return (
-    <div>
+    <>
+    <Grid container justify="
+    center" alignItems="center" direction="column">
       <TextField
         className={classes.search}
         label={query && "Search for movies"}
@@ -42,9 +44,10 @@ export default function Search({ query, setQuery }) {
         placeholder="Search for movies"
         onChange={handleInputChange}
         InputProps={{
-          startAdornment: <SearchIcon className={classes.searchIcon} />
+          startAdornment: <Button onClick={search}><SearchIcon className={classes.searchIcon} /></Button>
         }}
       />
-    </div>
+    </Grid>
+    </>
   );
 }
