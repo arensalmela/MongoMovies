@@ -45,7 +45,7 @@ export default function CollectionCardGrid() {
           <Paper className={classes.paper}>
             {
               userMovies.length
-                ? userMovies.map(movie => (
+                ? userMovies.filter(m => !m.watched).map(movie => (
                   <>
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
                     <br />
@@ -61,7 +61,7 @@ export default function CollectionCardGrid() {
           <Paper className={classes.paper}>
             {
               userMovies.length
-                ? userMovies.map(movie => (
+                ? userMovies.filter(m => m.watched).map(movie => (
                   <>
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
                     <br />
