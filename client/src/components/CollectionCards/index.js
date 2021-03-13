@@ -51,7 +51,7 @@ export default function CollectionCards() {
               return (
                 <Grid item xs={6} key={movie.id}>
                   <Card className={classes.root}>
-                    <CardHeader title={movie.title} subheader={movie.release_date} />
+                    <CardHeader title={movie.title} subheader={"Release Date: " + movie.release_date} />
                     <CardMedia
                       className={classes.media}
                       image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
