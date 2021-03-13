@@ -78,7 +78,7 @@ export default function MovieCard({ movie, updateUsers }) {
     }
 
     const updateRating = (event) => {
-        API.updateRating(user.email, movie.title, event.target.value)
+        API.setRating(user.email, movie.title, event.target.value)
             .then(() => updateUsers())
     }
 
@@ -117,7 +117,7 @@ export default function MovieCard({ movie, updateUsers }) {
                                             precision={0.5}
                                             onChange={(event, newValue) => {
                                                 setValue(newValue);
-                                                updateRating(event)
+                                                // updateRating(event)
                                             }}
                                             onChangeActive={(event, newHover) => {
                                                 setHover(newHover);
