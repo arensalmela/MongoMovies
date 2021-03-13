@@ -17,7 +17,8 @@ import UserContext from '../../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345
+        maxWidth: 345,
+        boxShadow: ".1rem .1rem .25rem black"
     },
     media: {
         height: "300px",

@@ -12,10 +12,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center"
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(4),
     textAlign: "center",
     color: theme.palette.text.secondary,
-    backgroundColor: "#811",
+    backgroundColor: "#cc3333",
+    maxWidth: "22rem",
+    marginLeft: "auto",
+    marginRight: "auto",
+    boxShadow: ".25rem .25rem 1rem #440000"
   },
   column: {
 
@@ -39,7 +43,7 @@ export default function CollectionCardGrid() {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={2}>
+      <Grid container>
 
         <Grid item xs={6} id="Unwatched">
           <h3>Unwatched</h3>
@@ -49,6 +53,7 @@ export default function CollectionCardGrid() {
                 ? userMovies.filter(m => !m.watched).map(movie => (
                   <>
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
+                    <br />
                     <br />
                   </>
                 ))
@@ -65,6 +70,7 @@ export default function CollectionCardGrid() {
                 ? userMovies.filter(m => m.watched).map(movie => (
                   <>
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
+                    <br />
                     <br />
                   </>
                 ))
