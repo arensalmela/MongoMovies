@@ -77,6 +77,11 @@ export default function MovieCard({ movie, updateUsers }) {
             .then(() => updateUsers())
     }
 
+    const updateRating = (event) => {
+        API.updateRating(user.email, movie.title, event.target.value)
+            .then(() => updateUsers())
+    }
+
     return (
         <Grid item xs={location.pathname === '/collections' ? 12 : 6}>
             <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto" }}>
@@ -112,6 +117,7 @@ export default function MovieCard({ movie, updateUsers }) {
                                             precision={0.5}
                                             onChange={(event, newValue) => {
                                                 setValue(newValue);
+                                                updateRating(event)
                                             }}
                                             onChangeActive={(event, newHover) => {
                                                 setHover(newHover);
