@@ -5,7 +5,8 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
 import IconButton from "@material-ui/core/IconButton";
-import FavoriteIcon from "@material-ui/icons/Favorite";
+import VisibilityIcon from '@material-ui/icons/Visibility';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import { CardContent } from "@material-ui/core";
@@ -16,7 +17,8 @@ import UserContext from '../../utils/UserContext';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        maxWidth: 345
+        maxWidth: 345,
+        boxShadow: ".1rem .1rem .25rem black"
     },
     media: {
         height: "300px",
@@ -34,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function MovieCard({ movie }) {
+export default function MovieCard({ movie, updateUsers }) {
     const classes = useStyles();
     const location = useLocation();
     const user = useContext(UserContext);
@@ -44,9 +46,14 @@ export default function MovieCard({ movie }) {
             .then(({ data }) => console.log("success!", data.nModified, " modified"))
     }
 
+    const toggleWatched = (isWatched) => {
+        API.toggleWatched(user.email, movie.title, isWatched)
+            .then(() => updateUsers())
+    }
+
     return (
-        <Grid item xs={6}>
-            <Card className={classes.root}>
+        <Grid item xs={location.pathname === '/collections' ? 12 : 6}>
+            <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto" }}>
                 <CardHeader title={movie.title} subheader={"Release Date: " + movie.release_date} />
                 <CardMedia
                     className={classes.media}
@@ -62,9 +69,13 @@ export default function MovieCard({ movie }) {
                 <CardActions disableSpacing>
                     {
                         location.pathname === '/collections' ?
-                            <IconButton aria-label="add to favorites">
-                                {/* Checkbox */}
-                                <FavoriteIcon />
+                            <IconButton aria-label="add to favorites" onClick={() => toggleWatched(!movie.watched)}>
+                                {
+                                    !movie.watched && <VisibilityOffIcon />
+                                }
+                                {
+                                    movie.watched && <VisibilityIcon />
+                                }
                             </IconButton>
                             :
                             <IconButton aria-label="share" onClick={handleAddMovie}>

@@ -62,11 +62,11 @@ export default function CollectionCards() {
                       </details>
                     </CardContent>
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites" onClick={setWatched}>
+                      <IconButton aria-label="add to favorites" >
                         <VisibilityIcon />
                         <span className={classes.text}> Add to Watched </span>
                       </IconButton>
-                      
+
                     </CardActions>
                   </Card>
                 </Grid>

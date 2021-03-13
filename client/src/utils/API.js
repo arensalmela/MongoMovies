@@ -21,9 +21,11 @@ const API = {
 
     getUserProfile: function (googleId) {
         return axios.get(`/userProfile/${googleId}`)
+    },
+
+    toggleWatched: function (email, title, isWatched) {
+        return axios.put('watched', { email, title, isWatched })
     }
-
-
 
 }
 
