@@ -11,8 +11,6 @@ import API from '../../utils/API';
 import { CardContent } from "@material-ui/core";
 // import logoRed from "../../assets/images/logo-red.svg"
 import VisibilityIcon from '@material-ui/icons/Visibility';
-import ThumbUpIcon from '@material-ui/icons/ThumbUp';
-import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,8 +62,9 @@ export default function CollectionCards() {
                       </details>
                     </CardContent>
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites">
+                      <IconButton aria-label="add to favorites" onClick={setWatched}>
                         <VisibilityIcon />
+                        <span className={classes.text}> Add to Watched </span>
                       </IconButton>
                       
                     </CardActions>

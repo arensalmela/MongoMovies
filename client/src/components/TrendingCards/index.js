@@ -8,7 +8,6 @@ export default function TrendingCards({ trending }) {
 
   return (
     <>
-      {/* Fix the formatting of the cards */}
       <Container>
         <Grid container margin={2} spacing={3} align="center" justify="center">
           {
