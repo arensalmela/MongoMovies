@@ -13,6 +13,7 @@ import { useLocation } from 'react-router';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
 
+
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345
@@ -35,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MovieCard({ movie }) {
     const classes = useStyles();
-    const location = useLocation()
-    const user = useContext(UserContext)
+    const location = useLocation();
+    const user = useContext(UserContext);
 
     const handleAddMovie = () => {
         API.addMovie(movie, user.email)
@@ -46,7 +47,7 @@ export default function MovieCard({ movie }) {
     return (
         <Grid item xs={6}>
             <Card className={classes.root}>
-                <CardHeader title={movie.title} subheader={movie.release_date} />
+                <CardHeader title={movie.title} subheader={"Release Date: " + movie.release_date} />
                 <CardMedia
                     className={classes.media}
                     image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -68,7 +69,7 @@ export default function MovieCard({ movie }) {
                             :
                             <IconButton aria-label="share" onClick={handleAddMovie}>
                                 <AddIcon />
-                                <span className={classes.text}>Add to Collection</span>
+                                <span className={classes.text}> Add to Collections</span>
                             </IconButton>
                     }
                 </CardActions>

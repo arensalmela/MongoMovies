@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Search from "../Search/";
+import Search from "../Search";
 import TrendingCards from "../TrendingCards"
 import API from "../../utils/API";
 
@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function CardGrid() {
+export default function TrendingCardGrid() {
   const classes = useStyles();
   const [query, setQuery] = useState("");
   const [trending, setTrending] = useState([]);
@@ -41,7 +41,7 @@ export default function CardGrid() {
       <Grid container spacing={2} alignContent="center">
         <Grid item xs={12}>
           <Paper className={classes.paper}>
-            <Search query={query} setQuery={setQuery} />
+              <Search query={query} setQuery={setQuery} />
             <br></br>
             <TrendingCards trending={trending} />
           </Paper>
