@@ -11,4 +11,6 @@ router.route("/userProfileAdd").post(profileController.addMovieToProfile);
 //Updates movie to watched on user collection
 router.route("/watched").put(profileController.updateMovietoWatched);
 
+router.route("/rating").put(profileController.rating);
+
 module.exports = router;

@@ -13,6 +13,7 @@ const userSchema = new Schema({
       overview: { type: String },
       id: { type: String },
       watched: { type: Boolean },
+      rating: { type: Number, default: 0 },
     },
   ],
 });
