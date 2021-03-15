@@ -1,6 +1,6 @@
 //import axios from 'axios';
 //const db = require('../models/Movie');
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 const fetch = require("node-fetch");
