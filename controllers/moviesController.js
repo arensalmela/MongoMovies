@@ -1,6 +1,8 @@
 //import axios from 'axios';
 //const db = require('../models/Movie');
-require("dotenv").config();
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config();
+}
 const fetch = require("node-fetch");
 
 //Define methods for movieController
@@ -13,10 +15,11 @@ module.exports = {
       .then((data) => res.json(data));
   },
 
-
   search: function (req, res) {
-    const movieSearch = req.params.query
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`)
+    const movieSearch = req.params.query;
+    fetch(
+      `https://api.themoviedb.org/3/search/movie?api_key=${APIkey}&language=en-US&query=${movieSearch}&page=1&include_adult=false`
+    )
       .then((response) => response.json())
       .then((data) => res.json(data));
   },
