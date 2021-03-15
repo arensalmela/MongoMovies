@@ -7,7 +7,7 @@ import { useGoogleLogin } from "react-google-login";
 import API from "../../utils/API";
 import PageTitle from "../../components/PageTitle";
 
-const clientId = "123454472770-7dr95o1f2blqnbvudd27d9g4tp592roi.apps.googleusercontent.com";
+const clientId = "123454472770-80e9ibd1tkksfcqi1i7cv3u0gvfb0bqb.apps.googleusercontent.com";
 
 function Login({ setUser, type }) {
   const onSuccess = (res) => {
