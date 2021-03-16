@@ -62,6 +62,7 @@ export default function MovieCard({ movie, updateUsers }) {
     const classes = useStyles();
     const location = useLocation();
     const user = useContext(UserContext);
+    const [buttonText, setButtonText] = useState("Add to Collection");
 
     const [value, setValue] = useState(2);
     // index of value when user hovers
@@ -70,6 +71,7 @@ export default function MovieCard({ movie, updateUsers }) {
     const handleAddMovie = () => {
         API.addMovie(movie, user.email)
             .then(({ data }) => console.log("success!", data.nModified, " modified"))
+            .then(setButtonText("Added to Collection"))
     }
 
     const toggleWatched = (isWatched) => {
@@ -130,7 +132,7 @@ export default function MovieCard({ movie, updateUsers }) {
                         ) : (
                             <IconButton aria-label="share" onClick={handleAddMovie}>
                                 <AddIcon />
-                                <span className={classes.text}> Add to Collections</span>
+                                <span className={classes.text}> {buttonText}</span>
                             </IconButton>
                         )
                     }
