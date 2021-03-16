@@ -6,8 +6,10 @@
 
   <h3 align="center">MongoMovies</h3>
 
+  # 
+
   <p align="center">
-Looking for an easy to use and fun way to stay up to date on this week's trending movies? Look no further - MongoMovies is here to help!
+Looking for an easy and fun way to stay up to date on this week's trending movies? Look no further - MongoMovies is here to help!
     <br />
     <a href="https://github.com/arensalmela/MongoMovies"><strong>Explore the docs »</strong></a>
     <br />
@@ -18,11 +20,13 @@ Looking for an easy to use and fun way to stay up to date on this week's trendin
 
 </h2>
     <br />
+    <p align="center"> 
     <a href="#">View Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    </p>
   </p>
 </p>
 
@@ -57,7 +61,7 @@ Looking for an easy to use and fun way to stay up to date on this week's trendin
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-:soon: Description coming soon!
+If you are looking for an easy and fun way to stay up to date on this week's currently trending movies - you have landed on the right application! MongoMovies is perfect for you. This app allows users on both desktop and mobile to log in through a Gmail account and instantly have access to a list of movies to start creating a profile collection. Users can keep track of movies they add to their collection, update if they have watched it and add their personal movie rating. Movies listed are provided by the [TheMovieDB](https://www.themoviedb.org/?language=en-US) API.
 
 ### Built With
 
@@ -135,3 +139,5 @@ Our Project Link: [https://github.com/arensalmela/MongoMovies](https://github.co
 * []() :soon:
 * []() :soon:
 * []() :soon:
+
+[Return to Top](# )
