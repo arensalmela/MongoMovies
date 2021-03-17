@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 export default function PageTitle({ title }) {
     return (
-        <h1>{title}</h1>
+        <div>
+
+        <h1 align="center">{title}</h1>
+
+        </div>
     )
 }
