@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -11,25 +11,10 @@ import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import { CardContent } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 
 import { useLocation } from 'react-router';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
-
-// labels for ⭐ rating
-const labels = {
-    0.5: 'Useless',
-    1: 'Useless+',
-    1.5: 'Poor',
-    2: 'Poor+',
-    2.5: 'Ok',
-    3: 'Ok+',
-    3.5: 'Good',
-    4: 'Good+',
-    4.5: 'Excellent',
-    5: 'Excellent+',
-};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -62,10 +47,6 @@ export default function MovieCard(props) {
     const classes = useStyles();
     const location = useLocation();
     const user = useContext(UserContext);
-
-    // const [value, setValue] = useState(0);
-    // index of value when user hovers
-    const [hover, setHover] = useState(-1);
 
     const handleAddMovie = () => {
         API.addMovie(props.movie, user.email)
@@ -116,12 +97,7 @@ export default function MovieCard(props) {
                                             value={props.movie.rating}
                                             defaultValue={0}
                                             precision={0.5}
-                                            onChange={(event, newValue) => {
-                                                updateRating(event)
-                                            }}
-                                            onChangeActive={(event, newHover) => {
-                                                setHover(newHover);
-                                            }}
+                                            onChange={(event) => updateRating(event)}
                                         />
                                     </div>
                                 }
