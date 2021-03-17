@@ -12,7 +12,8 @@ import bronzeBadge from '../../assets/images/bronze-medal-svgrepo-com.svg'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    textAlign: "center"
+    textAlign: "center",
+    position: "relative"
   },
   paper: {
     padding: theme.spacing(4),
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   badge: {
     position: "absolute",
-    top: "4rem",
+    top: "-2rem",
     left: "50%",
     transform: "translate(-50%)"
   }
@@ -49,23 +50,30 @@ export default function CollectionCardGrid() {
   }, [])
 
   useEffect(() => {
+    // Sum watched movies
     const totalWatched = userMovies.filter(m => m.watched).length
+    // Get appropriate 
     const newBadge = totalWatched > 50 ? goldBadge
       : totalWatched > 20 ? silverBadge
         : totalWatched > 5 ? bronzeBadge
           : ""
-    console.log(totalWatched)
     setBadge(newBadge)
   }, [userMovies])
 
   return (
     <>
-
-      {
-        badge &&
-        <img src={badge} alt="User Badge" width={48} height={48} className={classes.badge} />
-      }
       <div className={classes.root}>
+        {
+          badge &&
+          <img
+            src={badge}
+            alt="User Badge"
+            width={48}
+            height={48}
+            className={classes.badge}
+            title={`You've watched ${userMovies.filter(m => m.watched).length} movies!`}
+          />
+        }
         <Grid container>
 
           <Grid item xs={6} id="Unwatched">
