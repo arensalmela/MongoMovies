@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+
 import API from "../../utils/API";
 import UserContext from "../../utils/UserContext";
 import MovieCard from "../MovieCard";
@@ -33,11 +36,49 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const badgeTiers = [
+  {
+    name: "Gold",
+    svg: goldBadge,
+    color: "#efc75e",
+    upper: Number.POSITIVE_INFINITY,
+    lower: 50
+  },
+  {
+    name: "Silver",
+    svg: silverBadge,
+    color: "#e4e7e7",
+    upper: 50,
+    lower: 20
+  },
+  {
+    name: "Bronze",
+    svg: bronzeBadge,
+    color: "#ed9d5d",
+    upper: 20,
+    lower: 5
+  },
+  {
+    name: "",
+    svg: "",
+    color: "",
+    upper: 5,
+    lower: 0
+  }
+]
+
 export default function CollectionCardGrid() {
   const classes = useStyles();
   const user = useContext(UserContext);
   const [userMovies, setUserMovies] = useState([]);
-  const [badge, setBadge] = useState("");
+  const [badgeStatus, setBadgeStatus] = useState({
+    name: "",
+    svg: "",
+    color: "",
+    upper: 0,
+    lower: 0,
+    currentTotal: 0
+  });
 
   const updateUsers = () => {
     API.getUserProfile(user.googleID)
@@ -51,28 +92,62 @@ export default function CollectionCardGrid() {
 
   useEffect(() => {
     // Sum watched movies
-    const totalWatched = userMovies.filter(m => m.watched).length
-    // Get appropriate 
-    const newBadge = totalWatched > 50 ? goldBadge
-      : totalWatched > 20 ? silverBadge
-        : totalWatched > 5 ? bronzeBadge
-          : ""
-    setBadge(newBadge)
+    const newTotal = userMovies.filter(m => m.watched).length
+    // Get appropriate badge data based on total movies watched
+    const newBadge = badgeTiers.find(tier => newTotal >= tier.lower)
+    // Update user's badge status
+    setBadgeStatus({ ...newBadge, currentTotal: newTotal })
   }, [userMovies])
+
+  const BadgeTooltip = withStyles((theme) => ({
+    tooltip: {
+      backgroundColor: badgeStatus.color,
+      textAlign: 'left',
+      color: '#000000',
+      maxWidth: 250,
+      fontSize: theme.typography.pxToRem(12),
+      border: '1px solid #333333',
+      boxShadow: '1px 1px 2px #cccccc',
+      paddingBottom: 0
+    },
+  }))(Tooltip);
 
   return (
     <>
       <div className={classes.root}>
         {
-          badge &&
-          <img
-            src={badge}
-            alt="User Badge"
-            width={48}
-            height={48}
-            className={classes.badge}
-            title={`You've watched ${userMovies.filter(m => m.watched).length} movies!`}
-          />
+          badgeStatus.name &&
+          // Tooltip with badge info
+          <BadgeTooltip
+            title={
+              <>
+                <Typography color="inherit">{`You've earned a ${badgeStatus.name} badge!`}</Typography>
+                <hr />
+                <b>{`${badgeStatus.currentTotal}`}</b> movies watched
+                {
+                  badgeStatus.name !== "Gold" ?
+                    <p>
+                      <b>{`${badgeStatus.upper - badgeStatus.currentTotal}`}</b>
+                      {" more until "}
+                      <b>{`${badgeTiers.find(tier => tier.lower === badgeStatus.upper).name}`}</b>
+                    </p>
+                    : <p>Congrats... celebrate with a movie? 😉</p>
+                }
+              </>
+            }
+            placement="right-start"
+            enterTouchDelay={200}
+          >
+            {/* Badge Image */}
+            <img
+              alt="User Badge"
+              src={badgeStatus.svg}
+              className={classes.badge}
+              width={48}
+              height={48}
+            />
+          </BadgeTooltip>
+
         }
         <Grid container>
 
