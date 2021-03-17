@@ -11,25 +11,10 @@ import AddIcon from "@material-ui/icons/Add";
 import Grid from "@material-ui/core/Grid";
 import { CardContent } from "@material-ui/core";
 import Rating from '@material-ui/lab/Rating';
-import Box from '@material-ui/core/Box';
 
 import { useLocation } from 'react-router';
 import API from '../../utils/API';
 import UserContext from '../../utils/UserContext';
-
-// labels for ⭐ rating
-const labels = {
-    0.5: 'Useless',
-    1: 'Useless+',
-    1.5: 'Poor',
-    2: 'Poor+',
-    2.5: 'Ok',
-    3: 'Ok+',
-    3.5: 'Good',
-    4: 'Good+',
-    4.5: 'Excellent',
-    5: 'Excellent+',
-};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,74 +43,64 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export default function MovieCard({ movie, updateUsers }) {
+export default function MovieCard(props) {
     const classes = useStyles();
     const location = useLocation();
     const user = useContext(UserContext);
     const [buttonText, setButtonText] = useState("Add to Collection");
 
-    const [value, setValue] = useState(2);
-    // index of value when user hovers
-    const [hover, setHover] = useState(-1);
-
     const handleAddMovie = () => {
-        API.addMovie(movie, user.email)
+        API.addMovie(props.movie, user.email)
             .then(({ data }) => console.log("success!", data.nModified, " modified"))
             .then(setButtonText("Added to Collection"))
     }
 
     const toggleWatched = (isWatched) => {
-        API.toggleWatched(user.email, movie.title, isWatched)
-            .then(() => updateUsers())
+        API.toggleWatched(user.email, props.movie.title, isWatched)
+            .then(() => props.updateUsers())
     }
 
     const updateRating = (event) => {
-        API.setRating(user.email, movie.title, event.target.value)
-            .then(() => updateUsers())
+        API.setRating(user.email, props.movie.title, event.target.value)
+            .then(() => props.updateUsers())
     }
 
     return (
         <Grid item xs={location.pathname === '/collections' ? 12 : 6}>
             <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto" }}>
-                <CardHeader title={movie.title} subheader={"Release Date: " + movie.release_date} />
+                <CardHeader title={props.movie.title} subheader={"Release Date: " + props.movie.release_date} />
                 <CardMedia
                     className={classes.media}
-                    image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                    image={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`}
                     title="Movie poster"
                 />
                 <CardContent>
                     <details>
                         <summary>Overview</summary>
-                        {movie.overview}
+                        {props.movie.overview}
                     </details>
                 </CardContent>
                 <CardActions disableSpacing>
                     {
                         location.pathname === '/collections' ? (
                             <>
-                                <IconButton aria-label="add to favorites" onClick={() => toggleWatched(!movie.watched)}>
+                                <IconButton aria-label="add to favorites" onClick={() => toggleWatched(!props.movie.watched)}>
                                     {
-                                        !movie.watched && <VisibilityOffIcon />
+                                        !props.movie.watched && <VisibilityOffIcon />
                                     }
                                     {
-                                        movie.watched && <VisibilityIcon />
+                                        props.movie.watched && <VisibilityIcon />
                                     }
                                 </IconButton>
                                 {
-                                    movie.watched && <div className={classes.rating}>
+                                    props.movie.watched && <div className={classes.rating}>
                                         <Rating
-                                            name="hover-feedback"
-                                            value={value}
+                                            name={props.movie.title}
+                                            value={props.movie.rating}
+                                            defaultValue={0}
                                             precision={0.5}
-                                            onChange={(event, newValue) => {
-                                                setValue(newValue);
-                                                // updateRating(event)
-                                            }}
-                                            onChangeActive={(event, newHover) => {
-                                                setHover(newHover);
-                                            }}
+                                            onChange={(event) => updateRating(event)}
                                         />
-                                        {value !== null && <Box ml={2}>{labels[hover !== -1 ? hover : value]}</Box>}
                                     </div>
                                 }
                             </>
