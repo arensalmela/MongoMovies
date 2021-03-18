@@ -11,7 +11,7 @@ module.exports = {
         .findOneAndUpdate({email: req.body.email}, {
            name: req.body.givenName,
            email: req.body.email,
-           googleID: req.body.googleId
+           googleId: req.body.googleId
         }, {upsert: true})
         .then(newUser => res.json(newUser))
         .catch(err => res.status(422).json(err));

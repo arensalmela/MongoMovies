@@ -9,7 +9,7 @@ const db = require("../models");
 
 module.exports = {
   userProfile: function (req, res) {
-    db.User.findOne({ googleID: req.params.googleId }).then((data) =>
+    db.User.findOne({ googleId: req.params.googleId }).then((data) =>
       res.json(data)
     );
   },
