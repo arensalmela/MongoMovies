@@ -7,7 +7,7 @@ import { Grid, TextField, Button } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   search: {
     position: "relative",
-    width: "45%",
+    width: "50%",
     marginRight: "auto",
     marginLeft: "auto"
   },

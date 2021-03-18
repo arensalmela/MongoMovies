@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <PageTitle title={`Welcome, ${user.name}!`} />
-      <TrendingCardGrid />
+      <TrendingCardGrid/>
       <Scroll showBelow={250}/>
     </>
   );
