@@ -81,14 +81,18 @@ export default function CollectionCardGrid() {
   });
 
   const updateUsers = () => {
-    API.getUserProfile(user.googleID)
-      .then(({ data }) => setUserMovies(data.movies));
+    if (user.googleId) {
+      API.getUserProfile(user.googleId)
+        .then(({ data }) => setUserMovies(data.movies));
+    }
   }
 
   // Get collections movies on mount
   useEffect(() => {
-    updateUsers()
-  }, [])
+    if (user) {
+      updateUsers()
+    }
+  }, [user])
 
   useEffect(() => {
     // Sum watched movies

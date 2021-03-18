@@ -8,6 +8,7 @@ const clientId = "123454472770-7dr95o1f2blqnbvudd27d9g4tp592roi.apps.googleuserc
 export default function LogoutButton() {
   const onLogoutSuccess = (res) => {
     alert("You have Logged Out")
+    
   };
 
   const onFailure = (res) => {
