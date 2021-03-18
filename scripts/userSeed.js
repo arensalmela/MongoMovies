@@ -9,7 +9,7 @@ const userSeed = [
   {
     name: "aabb",
     email: "adsalmela@gmail.com",
-    googleID: "aa",
+    googleId: "aa",
     movies: [
       {
         title: "Toy Story",
