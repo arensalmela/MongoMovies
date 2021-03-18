@@ -27,7 +27,7 @@ export default function Drawer({ open, toggleDrawer, setUser }) {
     const location = useLocation()
 
     const onLogoutSuccess = (res) => {
-        setUser(null)
+        setUser({})
     };
 
     const onFailure = (res) => {

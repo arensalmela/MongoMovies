@@ -27,16 +27,21 @@ export default function CollectionCardGrid() {
   const classes = useStyles();
   const user = useContext(UserContext);
   const [userMovies, setUserMovies] = useState([]);
+  
 
   const updateUsers = () => {
-    API.getUserProfile(user.googleID)
-      .then(({ data }) => setUserMovies(data.movies));
+    if (user.googleId) {
+      API.getUserProfile(user.googleId)
+        .then(({ data }) => setUserMovies(data.movies));
+    }
   }
 
   // Get collections movies on mount
   useEffect(() => {
-    updateUsers()
-  }, [])
+    if (user) {
+      updateUsers()
+    }
+  }, [user])
 
   return (
     <div className={classes.root}>
@@ -48,11 +53,10 @@ export default function CollectionCardGrid() {
             {
               userMovies.length
                 ? userMovies.filter(m => !m.watched).map(movie => (
-                  <>
+                  
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
-                    <br />
-                    <br />
-                  </>
+                    
+                  
                 ))
                 : <h2>You haven't added any movies yet!</h2>
             }
@@ -65,11 +69,9 @@ export default function CollectionCardGrid() {
             {
               userMovies.length
                 ? userMovies.filter(m => m.watched).map(movie => (
-                  <>
+                
                     <MovieCard movie={movie} key={movie.id} updateUsers={updateUsers} />
-                    <br />
-                    <br />
-                  </>
+                    
                 ))
                 : <h2>You haven't added any movies yet!</h2>
             }

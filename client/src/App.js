@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 import LoginPage from './pages/Login/Login'
 import Home from './pages/Home/Home'
@@ -8,7 +8,13 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-d
 import UserContext from "./utils/UserContext";
 
 export default function App() {
-  const [user, setUser] = useState(null);
+  const storedUser = JSON.parse(localStorage.getItem("id")) || {};  
+  //console.log(storedUser)
+  const [user, setUser] = useState(storedUser);
+  
+  useEffect(() => {
+    console.log(user)
+  }, [user])
 
   return (
     <Router>
@@ -17,11 +23,11 @@ export default function App() {
           <Nav setUser={setUser} />
           <Switch>
             <Route exact path="/login" >
-              {user ? <Redirect to="/" /> : <LoginPage setUser={setUser} type="Login" />}
+              {user.googleId ? <Redirect to="/" /> : <LoginPage user={user} setUser={setUser} type="Login" />}
             </Route>
 
             <Route exact path="/signup">
-              {user ? <Redirect to="/" /> : <LoginPage setUser={setUser} type="Signup" />}
+              {user.googleId ? <Redirect to="/" /> : <LoginPage user={user} setUser={setUser} type="Signup" />}
             </Route>
 
             <Route exact path="/logout" >
@@ -29,11 +35,11 @@ export default function App() {
             </Route>
 
             <Route exact path="/collections">
-              {!user ? <Redirect to="/login" /> : <Collections />}
+              {!user.googleId ? <Redirect to="/login" /> : <Collections />}
             </Route>
 
             <Route path="/">
-              {!user ? <Redirect to="/login" /> : <Home />}
+              {!user.googleId ? <Redirect to="/login" /> : <Home />}
             </Route>
           </Switch>
         </div>
