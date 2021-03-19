@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const path = require('path')
 //const app = express();
 const userController = require('../../controllers/userController');
 
@@ -6,5 +7,9 @@ const userController = require('../../controllers/userController');
 router.route('/login').post(
     userController.create
 )
+
+router.get((req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/build/index.html'))
+})
 
 module.exports = router;
