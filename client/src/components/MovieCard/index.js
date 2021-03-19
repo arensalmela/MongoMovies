@@ -22,11 +22,9 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: ".1rem .1rem .25rem black"
     },
     media: {
-        // maxHeight: "10rem",
-        // paddingTop: "56.25%" // 16:9
-        width: "100%",
-        paddingTop: "30rem",
-        backgroundSize: "cover"
+        paddingTop: "151%",
+        minHeight: "100%",
+        backgroundSize: "contain"
     },
     expand: {
         transform: "rotate(0deg)",
@@ -76,8 +74,8 @@ export default function MovieCard(props) {
     return (
 
         <Grid item xs={location.pathname === '/collections' ? 12 : 6}>
-            <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto" }}>
-                    <CardHeader title={props.movie.title} subheader={"Release Date: " + props.movie.release_date} />
+            <Card className={classes.root} style={{ marginLeft: "auto", marginRight: "auto", marginBottom: "2rem" }}>
+                <CardHeader title={props.movie.title} subheader={"Release Date: " + props.movie.release_date} />
                 <CardMedia
                     className={classes.media}
                     image={`https://image.tmdb.org/t/p/original${props.movie.poster_path}`}
