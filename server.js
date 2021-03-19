@@ -22,15 +22,15 @@ app.get("/apiKey", (req, res) => {
   res.json(process.env.APIkey);
 });
 
-app.use(routes);
 app.use(movieRoutes);
 app.use(profileRoutes);
+app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/MongoMovies",
-  { useUnifiedTopology: true, useNewUrlParser: true }
-);
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/MongoMovies", {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+});
 
 // Start the API server
 app.listen(PORT, function () {
