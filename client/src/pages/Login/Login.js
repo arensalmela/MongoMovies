@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    top: "30%",
+    position: "absolute",
+  // }
   },
 }));
 
