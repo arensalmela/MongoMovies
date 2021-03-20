@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//const app = express();
 const moviesController = require("../../controllers/moviesController");
 
 //Populating trending page

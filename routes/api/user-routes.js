@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const path = require("path");
-//const app = express();
 const userController = require("../../controllers/userController");
 
 //adding new user to db
