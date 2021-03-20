@@ -56,7 +56,6 @@ export default function MovieCard(props) {
 
   const handleAddMovie = () => {
     API.addMovie(props.movie, user.email)
-      .then(({ data }) => console.log("success!", data.nModified, " modified"))
       .then(setButtonText("Added to Collection"))
       .then(setButtonImg(<DoneIcon />));
   };

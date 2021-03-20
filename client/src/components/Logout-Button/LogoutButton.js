@@ -11,14 +11,11 @@ export default function LogoutButton() {
     alert("You have Logged Out");
   };
 
-  const onFailure = (res) => {
-    console.log("[Logout failed] res:", res);
-  };
+  
 
   const { signOut } = useGoogleLogout({
     clientId,
     onLogoutSuccess,
-    onFailure,
   });
 
   return (
