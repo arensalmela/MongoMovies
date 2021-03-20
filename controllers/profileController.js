@@ -1,11 +1,9 @@
-//import axios from 'axios';
+
 const db = require("../models");
-//require("dotenv").config();
-// const fetch = require("node-fetch");
-// const User = require("../models/User");
+
 
 //Define methods for movieController
-//const APIkey = process.env.APIkey;
+
 
 module.exports = {
   userProfile: function (req, res) {

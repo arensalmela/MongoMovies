@@ -1,5 +1,4 @@
-//import axios from 'axios';
-//const db = require('../models/Movie');
+
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
