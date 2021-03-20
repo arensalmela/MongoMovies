@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import LoginPage from './pages/Login/Login'
-import Home from './pages/Home/Home'
-import Collections from './pages/Collections/Collections';
-import Nav from './components/Nav/index';
-import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import LoginPage from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
+import Collections from "./pages/Collections/Collections";
+import Nav from "./components/Nav/index";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 import UserContext from "./utils/UserContext";
 
 export default function App() {
-  const storedUser = JSON.parse(localStorage.getItem("id")) || {};  
-  //console.log(storedUser)
+  const storedUser = JSON.parse(localStorage.getItem("id")) || {};
   const [user, setUser] = useState(storedUser);
-  
+
   useEffect(() => {
-    console.log(user)
-  }, [user])
+    console.log(user);
+  }, [user]);
 
   return (
     <Router>
@@ -22,15 +25,23 @@ export default function App() {
         <div className="App">
           <Nav setUser={setUser} />
           <Switch>
-            <Route exact path="/login" >
-              {user.googleId ? <Redirect to="/" /> : <LoginPage user={user} setUser={setUser} type="Login" />}
+            <Route exact path="/login">
+              {user.googleId ? (
+                <Redirect to="/" />
+              ) : (
+                <LoginPage user={user} setUser={setUser} type="Login" />
+              )}
             </Route>
 
             <Route exact path="/signup">
-              {user.googleId ? <Redirect to="/" /> : <LoginPage user={user} setUser={setUser} type="Signup" />}
+              {user.googleId ? (
+                <Redirect to="/" />
+              ) : (
+                <LoginPage user={user} setUser={setUser} type="Signup" />
+              )}
             </Route>
 
-            <Route exact path="/logout" >
+            <Route exact path="/logout">
               <Redirect to="/login" />
             </Route>
 

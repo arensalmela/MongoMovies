@@ -1,7 +1,7 @@
 import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import './style.css'
+import "./style.css";
 import { Grid, TextField, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,12 +9,12 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     width: "50%",
     marginRight: "auto",
-    marginLeft: "auto"
+    marginLeft: "auto",
   },
   searchIcon: {
     padding: theme.spacing(0, 1, 0, 0),
-    color: fade(theme.palette.common.black, 0.3)
-  }
+    color: fade(theme.palette.common.black, 0.3),
+  },
 }));
 
 export default function Search({ query, setQuery }) {
@@ -28,25 +28,29 @@ export default function Search({ query, setQuery }) {
   };
 
   const search = (e) => {
-    const currQuery = e.target.value
+    const currQuery = e.target.value;
     timeout = setTimeout(() => setQuery(currQuery), 1000);
   };
 
   return (
     <>
-    <Grid container justify="center" alignItems="center" direction="column">
-      <TextField
-        className={classes.search}
-        label={query && "Search for movies"}
-        variant="outlined"
-        type="text"
-        placeholder="Search for movies"
-        onChange={handleInputChange}
-        InputProps={{
-          startAdornment: <Button onClick={search}><SearchIcon className={classes.searchIcon} /></Button>
-        }}
-      />
-    </Grid>
+      <Grid container justify="center" alignItems="center" direction="column">
+        <TextField
+          className={classes.search}
+          label={query && "Search for movies"}
+          variant="outlined"
+          type="text"
+          placeholder="Search for movies"
+          onChange={handleInputChange}
+          InputProps={{
+            startAdornment: (
+              <Button onClick={search}>
+                <SearchIcon className={classes.searchIcon} />
+              </Button>
+            ),
+          }}
+        />
+      </Grid>
     </>
   );
 }

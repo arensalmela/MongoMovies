@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//const app = express();
 const profileController = require("../../controllers/profileController");
 
 //Populating collection page

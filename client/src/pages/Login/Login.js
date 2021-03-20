@@ -1,9 +1,7 @@
-// Referenced npm react-google-login
-import "./Login.css"
-import GoogleIcon from "../../assets/images/googleicon.svg"
-import React, { useEffect } from "react";
+import "./Login.css";
+import GoogleIcon from "../../assets/images/googleicon.svg";
+import React from "react";
 import { useGoogleLogin } from "react-google-login";
-//import { refreshTokenSetup } from "react-google-login"
 import API from "../../utils/API";
 import LandingWelcome from "../../components/LandingWelcome";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -36,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     top: "30%",
     position: "absolute",
-  // }
   },
 }));
 
@@ -45,11 +42,10 @@ function Login({ user, setUser, type }) {
 
   const onSuccess = (res) => {
     console.log("[Login Success] currentUser:", res.profileObj);
-    //refreshTokenSetup(res);
-    localStorage.setItem("id", JSON.stringify(res.profileObj))
-      API.newUser(res.profileObj)
-        .then((res) => setUser(res.data))
-        .catch(err => console.log(err))
+    localStorage.setItem("id", JSON.stringify(res.profileObj));
+    API.newUser(res.profileObj)
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
   };
 
   const onFailure = (res) => {
@@ -71,7 +67,7 @@ function Login({ user, setUser, type }) {
         <Grid item xs={false} sm={4} md={7} className={classes.image} />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
           <div className={classes.paper}>
-            <LandingWelcome/>
+            <LandingWelcome />
             <button onClick={signIn} className="button">
               <img src={GoogleIcon} alt="google icon" className="icon"></img>
               <span className="buttonText">{type} With Google</span>
@@ -79,13 +75,6 @@ function Login({ user, setUser, type }) {
           </div>
         </Grid>
       </Grid>
-      {/* 
-      <PageTitle title={`${type} ${type === 'Login' ? 'to your' : 'for a new'} account`} />
-
-      <button onClick={signIn} className="button">
-        <img src={GoogleIcon} alt="google icon" className="icon"></img>
-        <span className="buttonText">{type} With Google</span>
-      </button> */}
     </>
   );
 }

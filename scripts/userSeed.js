@@ -18,7 +18,6 @@ const userSeed = [
         overview: "Toy Story Overview",
         id: "API ID",
         watched: false,
-      
       },
       {
         title: "Toy Story 2",
@@ -27,24 +26,10 @@ const userSeed = [
         overview: "Toy Story 2 Overview",
         id: "API ID",
         watched: false,
-        
       },
     ],
   },
-  
 ];
-
-// db.User
-//     .remove({})
-//     .then(() => db.User.collection.insertMany(userSeed))
-//     .then(data => {
-//         console.log(data.result.n + " records inserted");
-//         process.exit(0);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         process.exit(1);
-//     })
 
 db.insertMany(userSeed)
   .then((data) => {

@@ -6,7 +6,6 @@ module.exports = {
   //new user - write google info to database
 
   create: function (req, res) {
-    //console.log(req.body)
     db.User.findOneAndUpdate(
       { email: req.body.email },
       {

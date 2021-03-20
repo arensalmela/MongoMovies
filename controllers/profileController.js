@@ -1,9 +1,4 @@
-
 const db = require("../models");
-
-
-//Define methods for movieController
-
 
 module.exports = {
   userProfile: function (req, res) {
