@@ -41,20 +41,14 @@ function Login({ user, setUser, type }) {
   const classes = useStyles();
 
   const onSuccess = (res) => {
-    console.log("[Login Success] currentUser:", res.profileObj);
     localStorage.setItem("id", JSON.stringify(res.profileObj));
     API.newUser(res.profileObj)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
   };
 
-  const onFailure = (res) => {
-    console.log("[Login Failed] res:", res);
-  };
-
   const { signIn } = useGoogleLogin({
     onSuccess,
-    onFailure,
     clientId,
     isSignedIn: true,
     accessType: "offline",

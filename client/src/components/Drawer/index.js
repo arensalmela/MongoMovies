@@ -31,14 +31,12 @@ export default function Drawer({ open, toggleDrawer, setUser }) {
     setUser({});
   };
 
-  const onFailure = (res) => {
-    console.log("[Logout failed] res:", res);
-  };
+  
 
   const { signOut } = useGoogleLogout({
     clientId,
     onLogoutSuccess,
-    onFailure,
+    
   });
 
   return (

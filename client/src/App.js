@@ -15,9 +15,7 @@ export default function App() {
   const storedUser = JSON.parse(localStorage.getItem("id")) || {};
   const [user, setUser] = useState(storedUser);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  useEffect(() => {}, [user]);
 
   return (
     <Router>
