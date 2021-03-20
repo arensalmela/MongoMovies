@@ -17,15 +17,16 @@ Looking for an easy and fun way to stay up to date on this week's trending movie
 <h2 align="center"> 
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/arensalmela/MongoMovies)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </h2>
     <br />
     <p align="center"> 
-    <a href="#">View Demo</a>
+    <a href="https://mongomovies.herokuapp.com/">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/arensalmela/MongoMovies/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/arensalmela/MongoMovies/issues">Request Feature</a>
     </p>
   </p>
 </p>
@@ -62,12 +63,12 @@ Looking for an easy and fun way to stay up to date on this week's trending movie
 ## About The Project
 
 If you are looking for an easy and fun way to stay up to date on this week's currently trending movies - you have landed on the right application! MongoMovies is perfect for you. This app allows users on both desktop and mobile to log in through a Gmail account and instantly have access to a list of movies to start creating a profile collection. Users can keep track of movies they add to their collection, update if they have watched it and add their personal movie rating. Movies listed are provided by the [TheMovieDB](https://www.themoviedb.org/?language=en-US) API.
-
 ### Built With
 
-* [React]("https://github.com/facebook/react")
-* [Mongoose]("https://mongoosejs.com/docs/guide.html")
-* [Material UI]("https://github.com/mui-org/material-ui")
+* [React](https://github.com/facebook/react)
+* [Mongoose](https://mongoosejs.com/docs/guide.html)
+* [Material UI](https://github.com/mui-org/material-ui)
+* [TheMovieDB API](https://www.themoviedb.org/?language=en-US)
 
 
 </br>
@@ -95,15 +96,23 @@ Get a copy up on your local directory by running follow these simple steps.
    ```sh
    npm install
    ```
+3. Run start script
+   ```sh
+   npm start
+   ```
 
 
 </br>
 
 ## Usage
 
-* :soon: Screenshots Coming Soon!
-* :soon: Deployed link video Coming Soon!
+[GitHub Project Link](https://github.com/arensalmela/MongoMovies)
+</n>
 
+[Heroku Deployed Link](https://mongomovies.herokuapp.com/)
+
+![screenshot](client/src/assets/images/demoScreen.png)
+ 
 </br>
 
 ## Roadmap
@@ -118,12 +127,15 @@ Interested in Contributing?
 $ git checkout -b XXyourRemoteBranchXX
 $ git commit -m "Added some super cool features"
 $ git push
+$ git checkout master
 ```
 * Open a Pull Request
 
 
 ## License
-:soon: *License coming soon!*
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Contact Us
 
 * Junko Yamazaki - [GitHub](https://github.com/junkoyama) 
@@ -131,13 +143,17 @@ $ git push
 * Aren Salmela - [GitHub](https://github.com/arensalmela)
 * Shannon Quinn - [GitHub](https://github.com/shannonquinn91)
 
-Our Project Link: [https://github.com/arensalmela/MongoMovies](https://github.com/arensalmela/MongoMovies)
+## Learnings
 
+:white_check_mark: Breaking up UI into components
+</br>
+:white_check_mark: Material UI
+</br>
+:white_check_mark: MongoDB database with a Mongoose ORM
+</br>
+:white_check_mark: theMovieDataBase (TMDB) API
+</br>
+:white_check_mark: Google Authentication
 
-## Acknowledgements
-
-* []() :soon:
-* []() :soon:
-* []() :soon:
 
 [Return to Top](# )
